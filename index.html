@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CivicPulse — Civic Education &amp; Social Awareness Academy</title>
+  <!-- 100% self-contained inline CSS & SVG architecture with zero external CDN dependencies -->
+  <style>
+    :root {
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --slate-950: #020617;
+
+      --emerald-50: #ecfdf5;
+      --emerald-100: #d1fae5;
+      --emerald-200: #a7f3d0;
+      --emerald-300: #6ee7b7;
+      --emerald-400: #34d399;
+      --emerald-500: #10b981;
+      --emerald-600: #059669;
+      --emerald-700: #047857;
+      --emerald-800: #065f46;
+      --emerald-900: #064e3b;
+      --emerald-950: #022c22;
+
+      --amber-50: #fffbeb;
+      --amber-100: #fef3c7;
+      --amber-200: #fde68a;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --amber-700: #b45309;
+      --amber-800: #92400e;
+
+      --indigo-50: #eef2ff;
+      --indigo-100: #e0e7ff;
+      --indigo-600: #4f46e5;
+      --indigo-700: #4338ca;
+      --indigo-800: #3730a3;
+
+      --rose-50: #fff1f2;
+      --rose-200: #fecdd3;
+      --rose-700: #be123c;
+      --rose-800: #9f1239;
+
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--slate-900);
+      background-color: var(--slate-50);
+      background-image:
+        radial-gradient(circle at 12% 16%, rgba(16, 185, 129, 0.11) 0%, transparent 40%),
+        radial-gradient(circle at 88% 84%, rgba(79, 70, 229, 0.09) 0%, transparent 44%),
+        radial-gradient(circle at 50% 4%, rgba(5, 150, 105, 0.08) 0%, transparent 52%),
+        url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23047857' stroke-opacity='0.065' stroke-width='1.25'%3E%3Cpath d='M80 14 L122 36 H38 Z'/%3E%3Cline x1='48' y1='36' x2='48' y2='74'/%3E%3Cline x1='69' y1='36' x2='69' y2='74'/%3E%3Cline x1='91' y1='36' x2='91' y2='74'/%3E%3Cline x1='112' y1='36' x2='112' y2='74'/%3E%3Cline x1='32' y1='74' x2='128' y2='74'/%3E%3Ccircle cx='80' cy='116' r='16'/%3E%3Cpath d='M64 116 H96 M80 100 V132 M67 106 C75 111 85 111 93 106 M67 126 C75 121 85 121 93 126'/%3E%3C/g%3E%3C/svg%3E");
+      background-attachment: fixed;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .civic-auth-backdrop {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(16, 185, 129, 0.16) 0%, transparent 46%),
+        radial-gradient(circle at 84% 82%, rgba(79, 70, 229, 0.11) 0%, transparent 48%);
+    }
+
+    .hidden { display: none !important; }
+    .flex { display: flex; }
+    .inline-flex { display: inline-flex; }
+    .grid { display: grid; }
+    .block { display: block; }
+    .flex-col { flex-direction: column; }
+    .flex-wrap { flex-wrap: wrap; }
+    .flex-grow { flex-grow: 1; }
+    .shrink-0 { flex-shrink: 0; }
+    .items-center { align-items: center; }
+    .items-start { align-items: flex-start; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-end { justify-content: flex-end; }
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .min-w-0 { min-width: 0; }
+    .w-full { width: 100%; }
+    .max-w-sm { max-width: 24rem; }
+    .max-w-md { max-width: 28rem; }
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-4xl { max-width: 56rem; }
+    .max-w-7xl { max-width: 80rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .relative { position: relative; }
+    .sticky { position: sticky; }
+    .fixed { position: fixed; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .top-0 { top: 0; }
+    .top-5 { top: 1.25rem; }
+    .right-5 { right: 1.25rem; }
+    .z-40 { z-index: 40; }
+    .z-50 { z-index: 50; }
+    .overflow-y-auto { overflow-y: auto; }
+    .overflow-hidden { overflow: hidden; }
+    .cursor-pointer { cursor: pointer; }
+
+    /* Spacing */
+    .gap-1\.5 { gap: 0.375rem; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-2\.5 { gap: 0.625rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .gap-8 { gap: 2rem; }
+
+    .p-3 { padding: 0.75rem; }
+    .p-4 { padding: 1rem; }
+    .p-5 { padding: 1.25rem; }
+    .p-6 { padding: 1.5rem; }
+    .p-7 { padding: 1.75rem; }
+    .p-8 { padding: 2rem; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+    .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .pt-2 { padding-top: 0.5rem; }
+    .pt-4 { padding-top: 1rem; }
+    .pt-6 { padding-top: 1.5rem; }
+    .pb-4 { padding-bottom: 1rem; }
+    .pl-11 { padding-left: 2.75rem; }
+    .pr-4 { padding-right: 1rem; }
+
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-1\.5 { margin-bottom: 0.375rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-5 { margin-bottom: 1.25rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+
+    .space-y-2 > * + * { margin-top: 0.5rem; }
+    .space-y-3 > * + * { margin-top: 0.75rem; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .space-y-5 > * + * { margin-top: 1.25rem; }
+    .space-y-6 > * + * { margin-top: 1.5rem; }
+    .space-y-8 > * + * { margin-top: 2rem; }
+
+    /* Dimensions & Borders */
+    .w-8 { width: 2rem; } .h-8 { height: 2rem; }
+    .w-9 { width: 2.25rem; } .h-9 { height: 2.25rem; }
+    .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
+    .w-11 { width: 2.75rem; } .h-11 { height: 2.75rem; }
+    .w-12 { width: 3rem; } .h-12 { height: 3rem; }
+    .w-16 { width: 4rem; } .h-16 { height: 4rem; }
+    .w-20 { width: 5rem; } .h-20 { height: 5rem; }
+    .h-3 { height: 0.75rem; }
+    .h-full { height: 100%; }
+    .max-h-\[86vh\] { max-height: 86vh; }
+
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-3xl { border-radius: 1.5rem; }
+    .rounded-full { border-radius: 9999px; }
+
+    .border { border: 1px solid var(--slate-200); }
+    .border-2 { border: 2px solid var(--emerald-500); }
+    .border-b { border-bottom: 1px solid var(--slate-100); }
+    .border-t { border-top: 1px solid var(--slate-100); }
+    .border-slate-100 { border-color: var(--slate-100); }
+    .border-slate-200 { border-color: var(--slate-200); }
+    .border-emerald-200 { border-color: var(--emerald-200); }
+    .border-emerald-300 { border-color: var(--emerald-300); }
+    .border-emerald-500 { border-color: var(--emerald-500); }
+    .border-amber-200 { border-color: var(--amber-200); }
+    .border-rose-200 { border-color: var(--rose-200); }
+
+    /* Typography */
+    .text-\[10px\] { font-size: 0.625rem; }
+    .text-\[11px\] { font-size: 0.6875rem; }
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 1.875rem; }
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    .font-extrabold { font-weight: 800; }
+    .uppercase { text-transform: uppercase; }
+    .tracking-tight { letter-spacing: -0.025em; }
+    .tracking-wider { letter-spacing: 0.05em; }
+    .leading-relaxed { line-height: 1.65; }
+
+    /* Colors */
+    .bg-white { background-color: var(--white); }
+    .bg-slate-50 { background-color: var(--slate-50); }
+    .bg-slate-100 { background-color: var(--slate-100); }
+    .bg-slate-900 { background-color: var(--slate-900); }
+    .bg-emerald-50 { background-color: var(--emerald-50); }
+    .bg-emerald-100 { background-color: var(--emerald-100); }
+    .bg-emerald-600 { background-color: var(--emerald-600); }
+    .bg-amber-50 { background-color: var(--amber-50); }
+    .bg-amber-100 { background-color: var(--amber-100); }
+    .bg-indigo-50 { background-color: var(--indigo-50); }
+    .bg-indigo-100 { background-color: var(--indigo-100); }
+    .bg-rose-50 { background-color: var(--rose-50); }
+
+    .text-white { color: var(--white); }
+    .text-slate-300 { color: var(--slate-300); }
+    .text-slate-400 { color: var(--slate-400); }
+    .text-slate-500 { color: var(--slate-500); }
+    .text-slate-600 { color: var(--slate-600); }
+    .text-slate-700 { color: var(--slate-700); }
+    .text-slate-800 { color: var(--slate-800); }
+    .text-slate-900 { color: var(--slate-900); }
+    .text-slate-950 { color: var(--slate-950); }
+    .text-emerald-300 { color: var(--emerald-300); }
+    .text-emerald-600 { color: var(--emerald-600); }
+    .text-emerald-700 { color: var(--emerald-700); }
+    .text-emerald-800 { color: var(--emerald-800); }
+    .text-emerald-900 { color: var(--emerald-900); }
+    .text-amber-500 { color: var(--amber-500); }
+    .text-amber-700 { color: var(--amber-700); }
+    .text-amber-800 { color: var(--amber-800); }
+    .text-indigo-700 { color: var(--indigo-700); }
+    .text-rose-700 { color: var(--rose-700); }
+    .text-rose-800 { color: var(--rose-800); }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 52%, var(--emerald-950) 100%);
+    }
+    .cloud-card-gradient {
+      background: linear-gradient(135deg, var(--emerald-900) 0%, var(--slate-900) 100%);
+    }
+    .header-glass {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+    .modal-backdrop {
+      background-color: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(3px);
+    }
+
+    .shadow-xs { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05); }
+    .shadow-sm { box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06); }
+    .shadow-md { box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08); }
+    .shadow-lg { box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12); }
+    .shadow-xl { box-shadow: 0 20px 28px -6px rgba(15, 23, 42, 0.14); }
+    .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25); }
+    .transition { transition: all 0.2s ease; }
+
+    button, input, select {
+      font-family: inherit;
+    }
+
+    button {
+      border: none;
+      background: none;
+    }
+
+    .btn-primary {
+      background-color: var(--emerald-600);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background-color: var(--emerald-700);
+    }
+
+    .btn-emerald-bright {
+      background-color: var(--emerald-500);
+      color: var(--slate-950);
+    }
+    .btn-emerald-bright:hover {
+      background-color: var(--emerald-400);
+    }
+
+    .btn-dark {
+      background-color: var(--slate-900);
+      color: var(--white);
+    }
+    .btn-dark:hover {
+      background-color: var(--slate-800);
+    }
+
+    .btn-secondary {
+      background-color: var(--slate-100);
+      color: var(--slate-700);
+    }
+    .btn-secondary:hover {
+      background-color: var(--slate-200);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--slate-200);
+      background-color: var(--white);
+      color: var(--slate-700);
+    }
+    .btn-outline:hover {
+      background-color: var(--slate-50);
+    }
+
+    .quiz-option {
+      border: 1px solid var(--slate-200);
+      background-color: var(--white);
+      color: var(--slate-800);
+    }
+    .quiz-option:hover {
+      border-color: var(--emerald-500);
+      background-color: var(--emerald-50);
+    }
+
+    .module-card {
+      border: 1px solid var(--slate-100);
+      background-color: var(--white);
+    }
+    .module-card:hover {
+      border-color: var(--emerald-300);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.07);
+    }
+
+    .input-field {
+      border: 1px solid var(--slate-200);
+      background-color: var(--white);
+      color: var(--slate-900);
+      outline: none;
+    }
+    .input-field:focus {
+      border-color: var(--emerald-600);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.16);
+    }
+
+    #xp-toast {
+      transform: translateY(-220%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    #xp-toast.toast-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    @media (min-width: 640px) {
+      .sm\:inline { display: inline; }
+      .sm\:p-7 { padding: 1.75rem; }
+      .sm\:p-8 { padding: 2rem; }
+      .sm\:p-10 { padding: 2.5rem; }
+      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .sm\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .sm\:gap-4 { gap: 1rem; }
+      .sm\:text-3xl { font-size: 1.875rem; }
+      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 768px) {
+      .md\:flex { display: flex; }
+      .md\:flex-row { flex-direction: row; }
+      .md\:items-center { align-items: center; }
+      .md\:w-80 { width: 20rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lg\:col-span-2 { grid-column: span 2 / span 2; }
+    }
+
+    svg.icon {
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      vertical-align: -0.125em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Notification Bar -->
+  <div id="xp-toast" role="status" aria-live="polite" class="fixed top-5 right-5 z-50 max-w-sm w-full bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-xl flex items-center gap-3 border border-emerald-500">
+    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg shrink-0">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <div>
+      <h4 id="toast-title" class="font-extrabold text-sm text-emerald-300">Action Complete!</h4>
+      <p id="toast-desc" class="text-xs text-slate-300">Progress updated.</p>
+    </div>
+  </div>
+
+  <!-- Level Up Congratulation Pop-up Modal (Every 3,000 XP up to Level 100) -->
+  <div id="levelup-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border-2 text-center space-y-5">
+      <div class="w-20 h-20 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto shadow-md" style="font-size: 2.25rem;">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      </div>
+      <div>
+        <span class="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold uppercase tracking-wider inline-block mb-2">
+          3,000 XP Milestone Promotion!
+        </span>
+        <h3 id="levelup-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Congratulations! You reached Level 2!
+        </h3>
+        <p id="levelup-desc" class="text-sm text-slate-600 mt-2 leading-relaxed">
+          Outstanding first-try accuracy and civic dedication! You crossed another 3,000 XP milestone on your path to Level 100.
+        </p>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center justify-between text-xs font-bold">
+        <span class="text-slate-500">Current Standing</span>
+        <span id="levelup-xp-badge" class="text-emerald-700 font-extrabold">3,000 XP • Level 2 / 100</span>
+      </div>
+      <button onclick="closeLevelUpModal()" class="w-full py-3.5 rounded-2xl btn-primary font-extrabold text-sm shadow-md transition cursor-pointer">
+        Continue Civic Journey
+      </button>
+    </div>
+  </div>
+
+  <!-- Global Header Bar -->
+  <header id="global-header" class="hidden sticky top-0 z-40 header-glass border-b border-slate-100 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <button id="header-back-btn" onclick="navigateTo('dashboard')" aria-label="Back to Dashboard" class="w-9 h-9 rounded-xl btn-secondary flex items-center justify-center transition cursor-pointer">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <div onclick="navigateTo('dashboard')" class="flex items-center gap-2.5 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-extrabold text-base shadow-xs">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L3 7v2h18V7l-9-5z"/><path d="M5 11v7M9.67 11v7M14.33 11v7M19 11v7"/><path d="M3 20h18"/></svg>
+        </div>
+        <span class="font-extrabold text-lg tracking-tight text-slate-900">CivicPulse</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2.5 sm:gap-4 flex-wrap justify-end">
+      <div onclick="openGradeSelectorModal()" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl btn-secondary transition cursor-pointer text-xs font-bold">
+        <svg class="icon text-emerald-600" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <span id="topbar-grade-tier">Grade 7 • Intermediate</span>
+      </div>
+
+      <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-xs font-extrabold text-amber-800">
+        <svg class="icon text-amber-500" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        <span id="topbar-streak">0 Days</span>
+      </div>
+
+      <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-extrabold text-emerald-800">
+        <svg class="icon text-emerald-600" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span id="topbar-xp">0 XP • Lvl 1</span>
+      </div>
+
+      <button onclick="openPrivacyModal()" class="px-3.5 py-1.5 rounded-xl bg-indigo-50 text-indigo-700 font-extrabold text-xs transition cursor-pointer flex items-center gap-1.5" title="Privacy Policy & Data Handling Charter">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="hidden sm:inline">Privacy &amp; Data</span>
+      </button>
+
+      <button onclick="logoutUser()" class="px-3 py-1.5 rounded-xl btn-outline text-xs font-bold transition cursor-pointer" title="Switch Username">
+        Switch User
+      </button>
+    </div>
+  </header>
+
+  <!-- Privacy Policy & Data Handling Charter Modal -->
+  <div id="privacy-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-emerald-200 flex flex-col max-h-[86vh]">
+      <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-sm">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="font-extrabold text-lg text-slate-900">Privacy Policy &amp; Student Data Charter</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase tracking-wider">School-Safe Charter</span>
+            </div>
+            <p class="text-xs text-slate-500">CivicPulse Data Handling Plan • Zero Third-Party Trackers</p>
+          </div>
+        </div>
+        <button onclick="closePrivacyModal()" aria-label="Close Privacy Modal" class="w-8 h-8 rounded-full btn-secondary flex items-center justify-center transition cursor-pointer">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="space-y-4 overflow-y-auto flex-grow text-xs text-slate-700 leading-relaxed pr-1">
+        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
+          <h4 class="font-extrabold text-sm text-emerald-900 mb-1">Commitment to Students, Educators &amp; Parents</h4>
+          <p class="text-emerald-800"><strong>CivicPulse</strong> is designed for educational learning and social awareness. We never sell student data, never run behavioral ads, and never request sensitive personal contact details.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-extrabold text-sm text-slate-900 mb-1.5">1. Data Minimization &amp; Strict Non-Collection</h4>
+          <ul style="padding-left: 1.25rem; list-style-type: disc;" class="space-y-1 text-slate-600">
+            <li><strong>Stored for Learning Progress:</strong> Chosen display username, grade selection, difficulty tier, XP points, level (1–100), streak count (starting at 0), and completed modules/questions.</li>
+            <li><strong>Never Collected:</strong> Real legal names, home addresses, phone numbers, email addresses, government IDs, camera/microphone audio, or exact GPS coordinates.</li>
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-extrabold text-sm text-slate-900 mb-1.5">2. Storage Architecture &amp; Graceful Offline Fallback</h4>
+          <p>When Cloud Firestore is configured in the host environment, user records are scoped under an authenticated user path (<code>/artifacts/{appId}/users/{userId}/profiles/{username}</code>). If no Firebase configuration is present or the device is offline, CivicPulse safely runs using in-memory session state with zero errors.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-extrabold text-sm text-slate-900 mb-1.5">3. Zero External CDNs &amp; Zero Advertising Trackers</h4>
+          <p>All styles, icons, civic background patterns, passages, and question banks are embedded directly inside <code>civicpulse_app.html</code> with no external CSS frameworks, icon CDNs, or ad-tracking scripts.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-extrabold text-sm text-slate-900 mb-1.5">4. Fresh Login Reset &amp; One-Click Record Erasure</h4>
+          <p>Every time the login form is submitted, XP and streak start fresh at <code>0</code>. You can also permanently erase your current session/cloud record at any time using the button below.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 flex-wrap">
+        <button onclick="eraseMyRecord()" class="px-4 py-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 font-bold text-xs transition cursor-pointer">
+          Erase My Record
+        </button>
+        <button onclick="closePrivacyModal()" class="px-6 py-2.5 rounded-xl btn-primary font-extrabold text-xs transition cursor-pointer">
+          Close Charter
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grade & Difficulty Selector Modal -->
+  <div id="grade-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100">
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-lg text-slate-900">Learning Settings</h3>
+            <p class="text-xs text-slate-500">Adjust grade or difficulty tier</p>
+          </div>
+        </div>
+        <button onclick="closeGradeSelectorModal()" aria-label="Close Settings Modal" class="w-8 h-8 rounded-full btn-secondary flex items-center justify-center transition cursor-pointer">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Student Grade / Class</label>
+          <select id="modal-grade-select" class="w-full px-4 py-3 rounded-xl input-field font-semibold text-sm">
+            <option value="6">Grade 6</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+            <option value="11">Grade 11</option>
+            <option value="12">Grade 12</option>
+          </select>
+          <p class="text-[11px] text-amber-700 mt-1 font-medium">Changing grade resets XP and streak to 0.</p>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Difficulty Tier</label>
+          <select id="modal-difficulty-select" class="w-full px-4 py-3 rounded-xl input-field font-semibold text-sm">
+            <option value="Beginner">Beginner (Guided &amp; Clear)</option>
+            <option value="Intermediate">Intermediate (Applied Civic Scenarios)</option>
+            <option value="Advanced">Advanced (Analytical &amp; Policy Depth)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-6 flex items-center justify-end gap-3">
+        <button onclick="closeGradeSelectorModal()" class="px-4 py-2.5 rounded-xl btn-outline font-bold text-sm transition cursor-pointer">
+          Cancel
+        </button>
+        <button onclick="saveGradeSelectorModal()" class="px-5 py-2.5 rounded-xl btn-primary font-bold text-sm shadow-xs transition cursor-pointer">
+          Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Container -->
+  <main class="flex-grow flex flex-col">
+
+    <!-- VIEW 1: USERNAME LOGIN SCREEN -->
+    <div id="view-auth" class="civic-auth-backdrop flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      <div class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-slate-100 p-8 sm:p-10">
+        <div class="text-center mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl mx-auto shadow-md mb-4">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L3 7v2h18V7l-9-5z"/><path d="M5 11v7M9.67 11v7M14.33 11v7M19 11v7"/><path d="M3 20h18"/></svg>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">CivicPulse</h1>
+          <p class="text-sm text-slate-500 mt-2">Civic Education &amp; Social Awareness Academy — 7 modules, deep reading passages &amp; 770+ unique questions.</p>
+          <div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold">
+            <svg class="icon text-emerald-600" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span id="cloud-auth-badge">Initializing Session Storage...</span>
+          </div>
+        </div>
+
+        <form id="auth-form" onsubmit="handleLogin(event)" class="space-y-5">
+          <div>
+            <label for="auth-username" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Student Username</label>
+            <input type="text" id="auth-username" required minlength="2" maxlength="30" placeholder="Enter your username" class="w-full px-4 py-3.5 rounded-2xl input-field font-medium text-sm transition">
+          </div>
+
+          <div>
+            <label for="auth-grade" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">School Grade / Class</label>
+            <select id="auth-grade" class="w-full px-4 py-3.5 rounded-2xl input-field font-semibold text-sm transition">
+              <option value="6">Grade 6</option>
+              <option value="7" selected>Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="auth-difficulty" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Learning Difficulty Tier</label>
+            <select id="auth-difficulty" class="w-full px-4 py-3.5 rounded-2xl input-field font-semibold text-sm transition">
+              <option value="Beginner">Beginner (Guided &amp; Clear)</option>
+              <option value="Intermediate" selected>Intermediate (Applied Civic Scenarios)</option>
+              <option value="Advanced">Advanced (Analytical &amp; Policy Depth)</option>
+            </select>
+          </div>
+
+          <button type="submit" id="auth-submit-btn" class="w-full py-4 rounded-2xl btn-primary font-extrabold text-base shadow-md transition cursor-pointer flex items-center justify-center gap-2">
+            <span>Enter CivicPulse Hub</span>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+          <button type="button" onclick="openPrivacyModal()" class="text-xs font-bold text-slate-500 hover:text-emerald-700 cursor-pointer">
+            Read Privacy Policy &amp; Data Handling Charter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: DASHBOARD -->
+    <div id="view-dashboard" class="hidden flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <div class="hero-gradient text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-extrabold tracking-wider uppercase inline-block mb-3">
+            Civic Education &amp; Social Awareness Hub
+          </span>
+          <h2 id="dash-welcome-name" class="text-2xl sm:text-3xl font-extrabold tracking-tight">Welcome, Citizen!</h2>
+          <p id="dash-welcome-sub" class="text-slate-300 text-sm mt-1">Earn XP strictly on first-try correct answers and advance every 3,000 XP up to Level 100.</p>
+        </div>
+        <button onclick="navigateTo('hub')" class="px-6 py-3.5 rounded-2xl btn-emerald-bright font-extrabold text-sm shadow-lg transition cursor-pointer flex items-center gap-2.5 shrink-0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Open All 7 Modules</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Daily Civic Challenge -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xs">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-lg font-bold">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-extrabold text-slate-900">Daily Civic Challenge</h3>
+                  <p class="text-xs text-slate-500">First-try right answer earns +20 XP • Wrong first try earns 0 XP</p>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs">
+                +20 XP (First Try Only)
+              </span>
+            </div>
+
+            <div id="daily-challenge-box" class="mt-4"></div>
+          </div>
+
+          <!-- Curriculum Modules Preview -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xs">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-2">
+              <h3 class="text-lg font-extrabold text-slate-900">Curriculum Modules</h3>
+              <button onclick="navigateTo('hub')" class="text-emerald-700 font-bold text-sm cursor-pointer">View All 7 Modules →</button>
+            </div>
+            <div id="dashboard-modules-preview" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Standing & Level Progress -->
+          <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-xs space-y-6">
+            <h3 class="text-base font-extrabold text-slate-900">Your Civic Standing</h3>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-center">
+                <div class="text-amber-500 text-2xl mb-1 flex justify-center">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                </div>
+                <p id="dash-stat-streak" class="text-2xl font-extrabold text-slate-900">0 Days</p>
+                <p class="text-[11px] font-bold text-amber-700 uppercase tracking-wider mt-0.5">Streak (Starts 0)</p>
+              </div>
+
+              <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-center">
+                <div class="text-emerald-600 text-2xl mb-1 flex justify-center">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <p id="dash-stat-xp" class="text-2xl font-extrabold text-slate-900">0 XP</p>
+                <p id="dash-stat-level" class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider mt-0.5">Level 1 / 100</p>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-600 mb-1.5">
+                <span id="dash-next-level-label">Next Promotion (3,000 XP)</span>
+                <span id="dash-next-level-xp">0 / 3,000 XP</span>
+              </div>
+              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                <div id="dash-level-bar" class="bg-emerald-600 h-full rounded-full transition" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-600 mb-2">
+                <span>Modules Completed</span>
+                <span id="dash-modules-progress">0 / 7 Modules</span>
+              </div>
+              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                <div id="dash-progress-bar" class="bg-indigo-600 h-full rounded-full transition" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cloud & Privacy Card -->
+          <div class="cloud-card-gradient text-white rounded-3xl p-6 sm:p-7 shadow-lg space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base">Storage &amp; Privacy</h4>
+                <p id="cloud-sync-status" class="text-[11px] text-emerald-300 font-semibold">Session Ready</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              Every quiz question awards +15 XP strictly on your first try (+25 XP module mastery bonus). Level 1 to 100 unlocks every 3,000 XP.
+            </p>
+            <button onclick="openPrivacyModal()" class="w-full py-3 rounded-xl bg-white text-slate-900 font-extrabold text-xs transition cursor-pointer shadow-sm">
+              Privacy Policy &amp; Data Handling Charter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: MODULE HUB -->
+    <div id="view-hub" class="hidden flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Civic Education &amp; Social Awareness Modules</h2>
+          <p class="text-sm text-slate-500 mt-1">All 7 modules feature extensive passages and 110 strictly unique questions each (770+ total).</p>
+        </div>
+        <div class="relative w-full md:w-80">
+          <span style="position:absolute; left:1rem; top:50%; transform:translateY(-50%);" class="text-slate-400">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </span>
+          <input type="text" id="hub-search" oninput="filterHubModules()" placeholder="Search modules..." class="w-full pl-11 pr-4 py-3 rounded-2xl input-field font-medium text-sm transition">
+        </div>
+      </div>
+
+      <div id="hub-modules-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+
+    <!-- VIEW 4: MODULE READER & QUIZ VIEW -->
+    <div id="view-reader" class="hidden flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <button onclick="navigateTo('hub')" class="inline-flex items-center gap-2 text-slate-600 font-bold text-sm mb-6 transition cursor-pointer">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Back to All Modules</span>
+      </button>
+
+      <div id="reader-content-box" class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-100 shadow-xs space-y-8"></div>
+    </div>
+
+  </main>
+
+  <!-- Optional Firebase Cloud Firestore Integration (with graceful fallback when unconfigured or offline) -->
+  <script type="module">
+    let db = null;
+    let currentUid = null;
+    let appId = "civicpulse-school-competition";
+
+    async function initOptionalFirestore() {
+      const badge = document.getElementById("cloud-auth-badge");
+      try {
+        if (typeof __app_id !== "undefined" && __app_id) {
+          appId = String(__app_id);
+        }
+
+        if (typeof __firebase_config === "undefined" || !__firebase_config) {
+          if (badge) badge.innerText = "Session & Cloud-Ready Mode";
+          return;
+        }
+
+        const parsedConfig = typeof __firebase_config === "string"
+          ? JSON.parse(__firebase_config)
+          : __firebase_config;
+
+        if (!parsedConfig || !parsedConfig.apiKey) {
+          if (badge) badge.innerText = "Session & Cloud-Ready Mode";
+          return;
+        }
+
+        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
+        const { getAuth, signInAnonymously, signInWithCustomToken } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
+        const { getFirestore, doc, getDoc, setDoc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+
+        const firebaseApp = initializeApp(parsedConfig);
+        const authInstance = getAuth(firebaseApp);
+        db = getFirestore(firebaseApp);
+
+        if (typeof __initial_auth_token !== "undefined" && __initial_auth_token) {
+          const cred = await signInWithCustomToken(authInstance, __initial_auth_token);
+          currentUid = cred.user ? cred.user.uid : null;
+        } else {
+          const cred = await signInAnonymously(authInstance);
+          currentUid = cred.user ? cred.user.uid : null;
+        }
+
+        window.__civicFirestore = {
+          getDoc: async (username) => {
+            if (!db || !currentUid || !username) return null;
+            const safeKey = username.toLowerCase().replace(/[^a-z0-9_-]/g, "_");
+            const ref = doc(db, "artifacts", appId, "users", currentUid, "profiles", safeKey);
+            const snap = await getDoc(ref);
+            return snap.exists() ? snap.data() : null;
+          },
+          saveDoc: async (stateObj) => {
+            if (!db || !currentUid || !stateObj.username) return false;
+            const safeKey = stateObj.username.toLowerCase().replace(/[^a-z0-9_-]/g, "_");
+            const ref = doc(db, "artifacts", appId, "users", currentUid, "profiles", safeKey);
+            await setDoc(ref, {
+              username: stateObj.username,
+              grade: stateObj.grade,
+              difficulty: stateObj.difficulty,
+              xp: stateObj.xp,
+              streak: stateObj.streak,
+              completedLessons: stateObj.completedLessons,
+              completedQuizzes: stateObj.completedQuizzes,
+              moduleQuizProgress: JSON.stringify(stateObj.moduleQuizProgress || {}),
+              dailyChallengeAnswered: stateObj.dailyChallengeAnswered,
+              updatedAt: new Date().toISOString()
+            });
+            return true;
+          },
+          deleteDoc: async (username) => {
+            if (!db || !currentUid || !username) return false;
+            const safeKey = username.toLowerCase().replace(/[^a-z0-9_-]/g, "_");
+            const ref = doc(db, "artifacts", appId, "users", currentUid, "profiles", safeKey);
+            await deleteDoc(ref);
+            return true;
+          }
+        };
+
+        if (badge) badge.innerText = "Cloud Firestore Connected";
+      } catch (error) {
+        console.warn("Firestore unavailable; running in safe local session mode:", error);
+        if (badge) badge.innerText = "Safe Session Mode Active";
+      }
+    }
+
+    initOptionalFirestore();
+  </script>
+
+  <script>
+    const MODULE_SVGS = {
+      scale: '<svg class="icon" viewBox="0 0 24 24"><path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1zM2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1zM7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>',
+      droplet: '<svg class="icon" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+      traffic: '<svg class="icon" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="7" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="17" r="1.5"/></svg>',
+      shield: '<svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+      recycle: '<svg class="icon" viewBox="0 0 24 24"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12M14 16l-3 3 3 3M8.293 13.596L7.196 9.5 3.1 10.598M9.344 5.811l1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843M13.378 9.633l4.096 1.098 1.097-4.096"/></svg>',
+      landmark: '<svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>',
+      leaf: '<svg class="icon" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>'
+    };
+
+    const CIVIC_MODULES = [
+      {
+        id: "fundamental-rights-duties",
+        title: "Fundamental Rights & Duties",
+        badge: "Module 1 • Rights & Civic Duty",
+        iconKey: "scale",
+        colorClass: "bg-emerald-50 text-emerald-700",
+        desc: "Explore constitutional guarantees of equality, freedom, protection against exploitation, remedies, and citizen duties.",
+        passage: [
+          "A healthy constitutional democracy rests on the balance between citizens' Fundamental Rights and their Fundamental Duties. Rights protect human dignity, liberty, and fair treatment from arbitrary power, while duties remind every member of society that freedom thrives only when everyone respects shared civic rules, public property, and the rights of others.",
+          "Core guarantees of equality forbid arbitrary discrimination in public spaces, public employment, and access to schools or civic facilities, while allowing fair affirmative support for historically disadvantaged groups so that every student has an equitable chance to learn and succeed. Abolishing untouchability and hereditary privilege reinforces social cohesion and equal human worth across neighborhoods and classrooms.",
+          "Personal liberty and freedom of speech empower citizens to ask questions, share ideas, assemble peacefully without arms, form associations, move across the country, and pursue lawful livelihoods. At the same time, responsible expression respects lawful boundaries such as public order, national security, and human dignity. Safeguards against arbitrary arrest, double jeopardy, and forced self-incrimination ensure fair legal procedures.",
+          "Protecting children from hazardous labor and human trafficking—alongside guaranteeing free and compulsory elementary schooling for ages 6 to 14—keeps childhood safe and opens doors to opportunity. Constitutional remedies such as writs from higher courts ensure that rights are practical legal protections rather than empty promises, paired with Fundamental Duties such as upholding constitutional ideals, protecting nature, promoting harmony, and safeguarding public property."
+        ],
+        coreFacts: [
+          ["Equality & Dignity", "Equal treatment under law, equal access to public spaces, and abolition of untouchability and titles."],
+          ["Freedoms & Safeguards", "Peaceful expression, assembly, movement, fair trial protections, and free schooling for ages 6–14."],
+          ["Protection & Remedies", "Ban on hazardous child labor and forced labor, enforceable remedies, and civic duties toward society."]
+        ],
+        uniqueQuestions: [
+          ["Why are Fundamental Rights paired with Fundamental Duties in a healthy democracy?", "Rights protect individual dignity while duties encourage shared responsibility toward others and public life", "Duties cancel out all personal freedoms", "Only government officials have duties", "Rights apply only during elections"],
+          ["What does equality before the law primarily mean in civic life?", "Every person is subject to the law fairly and no one stands above lawful accountability", "Only wealthy citizens follow rules", "Courts ignore legal procedures", "Rules change daily for one person"],
+          ["Why does society prohibit discrimination in public wells, parks, schools, and shops?", "To ensure equal access, inclusion, and human dignity for every member of the community", "To limit how many people visit parks", "To increase entry fees for students", "To divide neighborhoods by background"],
+          ["Why is abolishing untouchability essential for social awareness?", "It upholds equal human worth and ends social exclusion and humiliation", "It reduces the number of schools", "It replaces public elections", "It lowers municipal taxes"],
+          ["What is the purpose of abolishing hereditary titles in a republic?", "To prevent artificial social hierarchy and treat citizens equally in public standing", "To ban all awards for bravery", "To stop academic degrees", "To rename national holidays"],
+          ["Which safeguard protects citizens from being punished twice for the exact same offense?", "Protection against double jeopardy", "Right to free parking", "Right to skip school exams", "Right to tax exemption"],
+          ["What does protection against self-incrimination mean for a person accused of an offense?", "No one can be forced to act as a witness against themselves", "Police must guess the answer", "Accused people cannot speak in court", "Witnesses never testify"],
+          ["Why must freedom of speech and peaceful assembly include reasonable public-order boundaries?", "To balance open expression with public safety, peace, and the rights of other citizens", "To silence all student questions", "To ban peaceful discussions", "To allow harmful incitement"],
+          ["What does personal liberty guarantee regarding arrest and detention?", "Fair legal procedure, knowing reasons for arrest, and timely review before a magistrate", "Arresting anyone without reason for years", "Hiding court hearings", "Skipping legal representation"],
+          ["Why is free and compulsory elementary education for ages 6 to 14 vital for social progress?", "It gives every child foundational literacy and civic readiness regardless of family income", "It limits learning to six-year-olds", "It replaces secondary education", "It applies only to private clubs"],
+          ["Why is employing children in hazardous factories, mines, or dangerous trades prohibited?", "Hazardous work harms children's physical health, safety, and right to schooling and growth", "Children work slower than machines", "Factories prefer empty buildings", "It increases school attendance"],
+          ["What is forced labor ('begar') and why is it unjust?", "Compelling someone to work against their will or without fair wages, violating human freedom", "Voluntary weekend tree planting", "Paid part-time internships", "Sharing household chores"],
+          ["What makes constitutional remedies vital to Fundamental Rights?", "Citizens can seek legal relief from courts when a right is violated, making rights enforceable", "Courts never review rights violations", "Rights exist only in speeches", "Laws cannot be challenged"],
+          ["Which Fundamental Duty directly connects to keeping buses, parks, and schools clean and undamaged?", "Safeguarding public property and abjuring violence", "Ignoring broken benches", "Littering on public walkways", "Damaging bus shelters"],
+          ["How does the Fundamental Duty to promote harmony and brotherhood strengthen society?", "It encourages respect across diverse languages, regions, and communities beyond narrow divisions", "It forces everyone to speak one word", "It discourages cultural festivals", "It isolates neighborhoods"],
+          ["Why does the Fundamental Duty to protect and improve the natural environment matter?", "Clean forests, lakes, rivers, and wildlife sustain life for present and future citizens", "Nature repairs itself from all pollution", "Only forest rangers care about nature", "Rivers do not need protection"],
+          ["What does cultivating a 'scientific temper and spirit of inquiry' encourage among students?", "Questioning myths with evidence, testing ideas carefully, and valuing reason and curiosity", "Memorizing without understanding", "Rejecting all experiments", "Accepting rumors without proof"],
+          ["Why is striving toward excellence in individual and collective activity listed as a civic duty?", "When citizens do honest, thoughtful work, community standards and public trust rise", "Only exam toppers have value", "Teamwork slows down progress", "Effort does not matter in society"],
+          ["If a student sees a classmate excluded from a school group activity due to background, what is the civic response?", "Stand up respectfully for inclusion so every student feels valued and equal", "Join in excluding the classmate", "Ignore the unfairness completely", "Turn it into a joke"],
+          ["Why is knowing both rights and duties important for young citizens in a coding competition or school council?", "It helps build fair rules, respect diverse voices, and take responsibility for group outcomes", "Rules are unnecessary in teams", "Only the team leader has rights", "Duties apply only to adults"],
+          ["What happens when citizens claim rights while ignoring their civic duties?", "Public trust weakens and shared spaces or services deteriorate for everyone", "Society becomes automatically peaceful", "Taxes become unnecessary", "Laws enforce themselves without care"],
+          ["Why does protecting minority cultural and educational interests matter in a diverse nation?", "It preserves rich languages, traditions, and heritage while ensuring equal opportunity for all", "It separates citizens into rival nations", "It bans learning other languages", "It closes public schools"],
+          ["What is the role of courts when a law or action conflicts with Fundamental Rights?", "Courts can review and strike down unconstitutional actions to protect citizens' rights", "Courts always side with power over law", "Courts cannot read the Constitution", "Courts only handle traffic tickets"],
+          ["Why is freedom of movement across the country beneficial for citizens?", "It lets citizens study, work, visit family, and experience diverse regions freely", "It allows driving on footpaths", "It removes all traffic rules", "It closes state borders"],
+          ["How does respecting civic duties support social awareness in daily school life?", "Students keep classrooms clean, return borrowed books on time, and listen fairly during debates", "Students leave trash for cleaners", "Students interrupt every speaker", "Students ignore shared rules"],
+          ["Why are human trafficking and exploitation strictly condemned?", "Every human being has inherent dignity and freedom that must never be bought, sold, or coerced", "Trafficking helps local markets", "Exploitation is a harmless trade", "Only adults can be exploited"],
+          ["What is the civic value of peaceful protest within the law?", "Citizens can peacefully highlight public concerns and petition authorities without harming people or property", "Destroying public buses proves a point", "Blocking ambulances is helpful", "Violence solves policy debates"],
+          ["Why should every student learn the basics of their country's constitutional values?", "Understanding core principles helps young citizens make ethical choices and defend fairness", "Constitutional values are only for lawyers", "Young people cannot understand fairness", "Rules never affect students"],
+          ["What does 'equal protection of laws' recognize about people in different situations?", "Laws should treat people fairly and provide supportive measures where needed to achieve true equality", "Everyone has identical needs in every case", "Rich and poor have identical resources", "Fairness means ignoring hardship"],
+          ["How does caring for public libraries, parks, and monuments reflect Fundamental Duties?", "It treats shared public assets as collective heritage belonging to all citizens", "Public places are for private dumping", "Monuments are meant for graffiti", "Parks do not belong to citizens"],
+          ["Why is freedom of conscience and religion important in a pluralistic society?", "It allows individuals to follow their conscience and beliefs peacefully while respecting others' beliefs", "It forces everyone into one belief", "It bans religious harmony", "It ignores peaceful practices"],
+          ["What is a key sign of active civic responsibility among students?", "Speaking up fairly against bullying or unfairness and helping keep the school safe and welcoming", "Staying silent when classmates are harmed", "Breaking school equipment", "Spreading rumors about peers"],
+          ["Why is defending the sovereignty and integrity of the nation a Fundamental Duty?", "National unity and stability protect peace, security, and constitutional freedoms for all residents", "Borders have no connection to safety", "Unity only matters during holidays", "Citizens have no stake in peace"],
+          ["How can a student practice equality in everyday group projects?", "Give every team member a fair voice, share credit honestly, and support teammates who need help", "Let one person dominate every decision", "Take credit for others' work", "Ignore quieter teammates"],
+          ["Why is fair legal process essential when someone is accused of wrongdoing?", "It prevents innocent people from being punished wrongly and ensures evidence is weighed fairly", "Accusation alone should equal guilt", "Trials should happen in secret without proof", "Fairness slows down punishment"],
+          ["What does 'civic awareness' mean when reading news or social posts?", "Checking whether claims are fair, accurate, and respectful rather than spreading bias or harm", "Believing every angry headline", "Sharing rumors to gain attention", "Ignoring facts completely"],
+          ["Why is respect for all citizens regardless of gender essential?", "Half of society is female, and equal opportunity in education, safety, and leadership benefits everyone", "Equal opportunity harms families", "Only men should hold leadership roles", "Gender equality is optional"],
+          ["How does the Right to Education strengthen social mobility?", "Quality education equips learners with skills and confidence to improve their lives and communities", "Schooling stops people from learning", "Only inherited wealth matters", "Education has no social impact"],
+          ["What is the link between dignity and Fundamental Rights?", "Fundamental Rights exist to safeguard every human being's inherent worth and self-respect", "Dignity is only for famous people", "Rights remove human responsibility", "Dignity is unimportant in law"],
+          ["Why should citizens honor national symbols and constitutional ideals?", "They represent shared democratic values, unity, and sacrifices made for freedom and justice", "Symbols have no meaning in democracy", "Respect is only for ceremonies", "Constitutional ideals are outdated"],
+          ["What is the safest and most effective way to address a school rule or policy you think is unfair?", "Raise the concern respectfully through student councils, teachers, or constructive dialogue with facts", "Vandalize school property", "Spread false accusations online", "Refuse to follow any rule"],
+          ["Why does protecting children's welfare count as a core social priority?", "Children depend on adults and institutions to stay safe, healthy, and educated until adulthood", "Children can fend for themselves completely", "Child safety is purely optional", "Schools have no safety role"],
+          ["How does practicing honesty in exams and assignments relate to civic character?", "Academic integrity builds personal trustworthiness and fairness that carry into public life", "Cheating helps build trust", "Honesty only matters in sports", "Fairness is irrelevant in school"],
+          ["What does 'constitutionalism' mean in simple terms?", "Government power is limited and guided by a constitution so authority cannot be exercised arbitrarily", "Leaders can do whatever they wish", "Laws do not bind officials", "Constitutions are just decorative books"],
+          ["Why is listening to different viewpoints during class discussions valuable?", "It broadens understanding, reduces prejudice, and leads to wiser, more empathetic decisions", "Only your own opinion is ever right", "Listening wastes time", "Disagreement must always be hostile"],
+          ["What role does civic education play in a school coding competition?", "It reminds builders to design technology that respects privacy, fairness, accessibility, and social good", "Coding has nothing to do with society", "Apps do not affect real people", "Ethics slows down software"],
+          ["Why is non-violence ('abjuring violence') vital in resolving social disagreements?", "Violence destroys lives and property and deepens hostility, whereas dialogue builds lasting solutions", "Arguments can only be settled with fists", "Property damage is harmless", "Peaceful dialogue never works"],
+          ["How does helping a new student who just moved to town show social awareness?", "Welcoming newcomers helps them feel included, safe, and connected to the school community", "Ignoring new students is friendlier", "Mocking accents builds unity", "Newcomers should stay alone"],
+          ["Why are Fundamental Rights called 'fundamental' in a constitution?", "They are essential to human liberty and self-development and are protected by the supreme law", "They are optional tips", "They change every week", "They apply to only one street"],
+          ["What should a citizen do when witnessing public funds or school resources being wasted?", "Report or raise it responsibly through proper channels so resources serve the public interest", "Waste even more resources too", "Hide obvious damage", "Stay indifferent to waste"],
+          ["Why does equality of opportunity matter even when people have different talents?", "Everyone deserves a fair chance to develop their abilities without unfair barriers of birth or status", "Talented people never need fair access", "Barriers make society stronger", "Opportunity should be unequal"],
+          ["How does civic awareness help prevent prejudice in neighborhoods?", "It encourages knowing neighbors as individuals rather than judging them by stereotypes", "Stereotypes are always accurate", "Avoiding neighbors prevents learning", "Prejudice builds strong communities"],
+          ["What is a key responsibility of citizens during elections and civic decision-making?", "Stay informed on real issues, vote thoughtfully when eligible, and respect democratic outcomes", "Vote blindly without knowing issues", "Spread fake news before elections", "Ignore public decisions completely"],
+          ["Why is safeguarding mother tongues and local cultures alongside national unity important?", "Cultural variety enriches human creativity while shared civic values keep the community united", "Local languages harm unity", "Culture should be erased", "Diversity weakens society"],
+          ["What does 'accountability' mean in public and civic life?", "Being answerable for your actions, decisions, and use of shared resources", "Blaming others for every mistake", "Hiding records from the public", "Avoiding all responsibility"],
+          ["How does learning about rights and duties prepare students for adulthood?", "It equips young people to act as informed, ethical, and engaged citizens in work and society", "Students never become adult citizens", "Civic knowledge is only for history tests", "Adulthood requires no civic habits"],
+          ["Why is protecting vulnerable people—such as the elderly, persons with disabilities, and children—a mark of social awareness?", "A compassionate society ensures safety, accessibility, and dignity for those who face extra challenges", "Vulnerable citizens do not need access", "Ramps and assistance are unnecessary", "Social care is unimportant"],
+          ["What is the connection between rule of law and everyday peace?", "Clear, fair rules applied consistently give people security and predictability in daily life", "Chaos is better than fair rules", "Laws only apply to strangers", "Rules should be ignored when convenient"],
+          ["How can a student turn knowledge of Fundamental Rights & Duties into everyday action?", "Treat peers with respect, care for shared spaces, verify facts, and speak up fairly for what is right", "Only memorize article numbers without acting", "Treat classmates unfairly", "Ignore school cleanliness"],
+          ["Why is every citizen's voice meaningful in a constitutional democracy?", "Democracy depends on informed, active citizens participating constructively in public life", "Ordinary citizens have zero influence", "Only one voice matters", "Participation is pointless"],
+          ["What does respecting privacy mean in everyday relationships and school life?", "Not snooping into others' private belongings, diaries, messages, or personal secrets without permission", "Reading classmates' private chats", "Opening others' bags without asking", "Sharing private secrets for laughs"],
+          ["How does civic education strengthen social awareness across generations?", "Students share practical ideas on fairness, safety, cleanliness, and respect with family and peers", "Young people cannot influence families", "Awareness stays trapped in textbooks", "Social habits never change"],
+          ["What is the clearest takeaway from studying Fundamental Rights & Duties?", "True freedom goes hand in hand with fairness, respect for others, and active civic responsibility", "Freedom means harming others freely", "Duties apply only to teachers", "Rights never need protection"],
+          ["Why is fairness in rules essential inside classrooms, clubs, and sports teams?", "Fair rules build trust, encourage effort, and ensure everyone competes or collaborates honestly", "Unfair rules make games better", "Cheating is a smart shortcut", "Rules should favor favorites"],
+          ["How does standing against discrimination strengthen a school community?", "It creates a safe learning environment where every student can focus, belong, and thrive", "Exclusion makes schools friendlier", "Bullying improves grades", "Silence helps victims"],
+          ["What is the ultimate goal of civic education in a free society?", "Developing thoughtful, compassionate, law-abiding citizens who contribute positively to the common good", "Winning arguments through shouting", "Memorizing slogans without care", "Ignoring community needs"]
+        ]
+      },
+      {
+        id: "water-conservation-sustainability",
+        title: "Water Conservation & Sustainability",
+        badge: "Module 2 • Water & Ecology",
+        iconKey: "droplet",
+        colorClass: "bg-sky-50 text-sky-700",
+        desc: "Understand freshwater scarcity, rainwater harvesting, groundwater recharge, greywater reuse, and smart daily habits.",
+        passage: [
+          "Although water covers most of the Earth's surface, the vast majority is salty ocean water or locked in ice caps, leaving only a tiny fraction of accessible freshwater to support ecosystems, farms, towns, and cities. Rapid urban growth, pollution, and unchecked pumping can strain local reservoirs and lower underground water tables, making water conservation an urgent matter of social awareness and shared survival.",
+          "Rainwater harvesting is one of the most practical ways communities store and replenish water. By guiding clean rainwater from rooftops or courtyards—using a first-flush arrangement to keep initial roof dust out—into storage tanks or filtered recharge pits, households can reduce runoff, ease street waterlogging during heavy rain, and help refill depleted underground aquifers.",
+          "Everyday water stewardship inside homes and schools makes a major cumulative difference. Fixing dripping taps, turning off running faucets while brushing or soaping hands, using water-saving fixtures, and collecting clean 'greywater' from handwashing or rinsing produce for garden plants all cut unnecessary waste. Because agriculture uses a large share of freshwater, reducing food waste and using water-smart irrigation like drip systems also conserve vast hidden volumes of water.",
+          "Protecting local ponds, lakes, wetlands, and riverbanks is equally vital because natural water bodies absorb excess monsoon water, filter pollutants, and support aquatic life. When citizens avoid dumping trash or chemicals into drains and water bodies, clean water remains safe for communities and future generations."
+        ],
+        coreFacts: [
+          ["Freshwater Reality", "Accessible freshwater is scarce, so every household and community must conserve and protect it."],
+          ["Harvesting & Recharge", "Rooftop rainwater capture and recharge pits reduce runoff and replenish groundwater."],
+          ["Daily & Ecological Care", "Fixing leaks, reusing greywater, cutting food waste, and protecting wetlands keep water sustainable."]
+        ],
+        uniqueQuestions: [
+          ["Why is water conservation critical even though oceans cover most of Earth?", "Most water on Earth is salty or frozen, while accessible freshwater needed for life and farming is limited", "Oceans are shrinking every week", "Rain never falls on land", "Freshwater is produced from plastic"],
+          ["What is groundwater depletion and why should communities care?", "Pumping underground water faster than it refills lowers water tables and can dry up wells and borewells", "Water turning into solid rock", "Clouds disappearing permanently", "Rivers flowing uphill"],
+          ["How does rooftop rainwater harvesting help during rainy seasons?", "It captures rain from roofs to store for use or recharge groundwater while reducing street runoff", "It stops rain from falling on trees", "It heats up city water tanks", "It pollutes clean rainwater"],
+          ["What is the role of a first-flush arrangement in a rainwater harvesting system?", "It diverts early dirty runoff carrying dust and leaves so cleaner rainwater enters storage or recharge", "It empties the tank every hour", "It adds salt to rainwater", "It blocks all rainfall"],
+          ["How does a groundwater recharge pit help a neighborhood?", "It filters rainwater through layers so it seeps into the ground to replenish underground water stores", "It stores garbage underground", "It pumps out drinking water", "It paves over soil with cement"],
+          ["How much clean water can a single steadily dripping tap waste over time?", "Thousands of liters over a year if left unrepaired", "Less than a teaspoon per year", "Zero water because it drips slowly", "Water returns to the pipe automatically"],
+          ["What is the simplest daily habit to save water while brushing teeth or washing hands?", "Turn off the tap while brushing or scrubbing instead of letting it run continuously", "Leave the tap wide open", "Use boiling water for everything", "Wash with bottled soda"],
+          ["What is 'greywater' in household water conservation?", "Relatively clean used water from sinks, showers, or rinsing that can be reused safely for plants or cleaning", "Toxic industrial acid", "Storm clouds in the sky", "Pure distilled ice"],
+          ["Why is reusing greywater for garden plants or floor mopping a smart sustainability practice?", "It gets a second useful purpose out of water before disposal, lowering fresh tap water demand", "Plants cannot grow near water", "It makes floors slippery forever", "It wastes more water"],
+          ["Why does reducing household and school food waste also save water?", "Growing, processing, and transporting food requires substantial water, so wasted food means wasted water", "Food is made without water", "Uneaten food creates rain", "Water is only used for washing plates"],
+          ["How does drip irrigation save water in gardens and farms compared to flooding fields?", "It delivers water slowly right near plant roots, cutting evaporation and runoff waste", "It sprays water high into the wind", "It floods the entire field deeply", "It waters only concrete paths"],
+          ["Why are urban ponds, lakes, and wetlands important for civic sustainability?", "They act as natural sponges that absorb heavy rain, recharge groundwater, and support biodiversity", "They are meant for dumping rubble", "They increase street flooding", "They have no ecological role"],
+          ["What happens when people dump household garbage or chemicals into nearby ponds or drains?", "It pollutes water, harms fish and wildlife, spreads disease, and clogs drainage flow", "It purifies drinking water", "It increases oxygen in water", "It builds healthy wetlands"],
+          ["Why is covering open soil everywhere with non-permeable concrete harmful to water recharge?", "It prevents rainwater from soaking into the soil and increases surface flooding", "It helps roots drink more water", "It cools down hot streets", "It refills deep aquifers"],
+          ["How does planting native trees and shrubs help conserve water?", "Roots bind soil and slow runoff while shade reduces soil moisture evaporation", "Trees drink all the rain so nothing remains", "Trees turn fresh water salty", "Trees stop wind from blowing"],
+          ["What is 'virtual water' in everyday items like paper, cotton, or food?", "The water used behind the scenes to grow, manufacture, and process the item", "Water inside a computer game", "Frozen water in a freezer", "Water vapor in a mirror"],
+          ["When is watering outdoor plants generally more efficient?", "Early morning or evening when lower temperatures reduce evaporation loss", "At peak afternoon heat", "During a downpour", "On dry cement"],
+          ["What should a student do if they notice a leaking pipe or overflowing tank at school?", "Report it promptly to a teacher or school maintenance staff so it gets fixed quickly", "Ignore it until next year", "Block the drain with paper", "Pretend not to see it"],
+          ["Why is checking water meters or monitoring usage helpful for families?", "Sudden unexplained increases can alert families early to hidden leaks or excessive use", "Meters create extra water", "Checking meters stops rain", "Meters replace water tanks"],
+          ["How does protecting riverbanks with vegetation help water quality?", "Plant roots stabilize banks against erosion and help filter sediment and runoff", "Riverbanks do not erode", "Plants turn rivers into deserts", "Roots block fish migration"],
+          ["Why is sharing water conservation awareness with family and neighbors impactful?", "Community-wide habits multiply savings across hundreds of homes and shared public spaces", "Only one person uses water", "Neighbors never listen to students", "Water habits cannot change"],
+          ["What does 'sustainable water use' mean for future generations?", "Using water wisely within natural replenishment limits so future citizens also have clean water", "Using as much water as possible today", "Draining local aquifers completely", "Ignoring water quality"],
+          ["How can a school run a simple water-awareness campaign?", "Conduct a tap-leak check, put up clear conservation reminders, and track monthly savings", "Lock all washrooms permanently", "Ban drinking water breaks", "Pour water on playgrounds"],
+          ["Why is keeping storm drains clear of plastic and trash essential before rainy seasons?", "Clear drains carry excess rainwater away safely instead of backing up into streets and homes", "Trash makes drains stronger", "Plastic absorbs rainwater", "Blocked drains prevent floods"],
+          ["What is a key takeaway about water and social awareness?", "Water is a shared life-giving resource that requires everyday care, fair use, and community protection", "Water is unlimited and free to waste", "Only engineers can save water", "Water rules apply only to farmers"]
+        ]
+      },
+      {
+        id: "road-safety-traffic-responsibility",
+        title: "Road Safety & Traffic Responsibility",
+        badge: "Module 3 • Street Safety & Law",
+        iconKey: "traffic",
+        colorClass: "bg-amber-50 text-amber-700",
+        desc: "Master pedestrian safety, traffic signals and signs, protective gear, emergency right-of-way, and calm road conduct.",
+        passage: [
+          "Public roads are shared spaces used by pedestrians, cyclists, commuters, school buses, delivery riders, and emergency vehicles. Road safety depends on predictability, patience, and mutual respect: when every road user follows traffic rules and stays alert, preventable crashes and injuries drop dramatically.",
+          "Pedestrians are among the most vulnerable road users and deserve special care. Always use sidewalks or footpaths where available, cross at marked crosswalks or pedestrian signals after looking both ways, and never step out suddenly from between parked vehicles. Where there is no footpath, walking facing oncoming traffic helps pedestrians stay visible and aware.",
+          "Traffic lights and standard road signs communicate clear rules at a glance. Red means stop completely, amber signals caution to prepare to stop or slow down safely, and green permits proceeding when the path is clear. Regulatory signs set mandatory rules such as speed limits or no entry, warning signs alert drivers to hazards like curves or school zones ahead, and guide signs point toward destinations or facilities.",
+          "Protective habits—such as wearing properly fastened helmets on two-wheelers, buckling seatbelts in cars, avoiding mobile phone distractions while walking or driving, and immediately giving clear passage to ambulances and fire trucks—protect lives. Helping injured people responsibly and calling emergency services quickly during critical moments reflects true civic compassion."
+        ],
+        coreFacts: [
+          ["Pedestrian First", "Use footpaths and marked crossings, stay alert, and never cross distracted by screens."],
+          ["Signals & Signs", "Obey red, amber, and green signals along with regulatory, warning, and guide signs."],
+          ["Life-Saving Habits", "Fasten helmets and seatbelts, yield to emergency vehicles, and stay calm on roads."]
+        ],
+        uniqueQuestions: [
+          ["Why is road safety considered a shared civic responsibility?", "Because roads are shared by walkers, cyclists, and drivers whose safety depends on mutual rule-following", "Only traffic police use roads", "Rules only apply to buses", "Crashes never hurt pedestrians"],
+          ["Where is the safest place for a pedestrian to walk along a busy street?", "On the designated footpath or sidewalk away from moving traffic", "In the middle of the vehicle lane", "Along the center divider", "Behind reversing trucks"],
+          ["What should you do before stepping onto a crosswalk to cross the street?", "Stop at the curb, look left, right, and left again, and cross only when safe", "Run across while looking at your phone", "Close your eyes and walk fast", "Step out without checking traffic"],
+          ["Why is crossing between parked cars or buses hazardous?", "Parked vehicles block your view of oncoming traffic and hide you from approaching drivers", "Parked cars move backwards suddenly", "Crosswalks only exist on highways", "Cars never drive near parked vehicles"],
+          ["What does a red traffic light instruct drivers to do?", "Stop completely behind the stop line and wait until it is safe and green to proceed", "Speed up to cross quickly", "Honk continuously until green", "Drive onto the footpath"],
+          ["What does a yellow or amber traffic light generally indicate?", "Prepare to stop or slow down cautiously because the signal is changing or caution is required", "Accelerate as fast as possible", "Turn off all vehicle lights", "Park in the middle of the junction"],
+          ["What is the main purpose of warning road signs (such as a curve or school zone ahead)?", "To alert drivers early to potential hazards so they can slow down and stay attentive", "To advertise nearby shops", "To tell drivers to speed up", "To mark bus ticket booths"],
+          ["What does a mandatory/regulatory road sign tell road users?", "A rule that must be followed by law, such as a speed limit or no-entry restriction", "An optional suggestion", "A weather forecast", "A parking discount"],
+          ["Why must riders and passengers on two-wheelers wear a helmet with the strap fastened?", "A properly fastened helmet protects the head in a fall and stays on during impact", "Helmets are only for decoration", "Unfastened straps save time", "Helmets are only needed on bridges"],
+          ["Why should everyone in a car—including back-seat passengers—wear a seatbelt?", "Seatbelts restrain passengers during sudden stops or crashes and reduce serious injuries", "Seatbelts make seats softer", "Only the driver can get hurt", "Seatbelts block air conditioning"],
+          ["Why is using a phone or wearing loud headphones while crossing or riding dangerous?", "It distracts eyes and ears from horns, sirens, and approaching vehicles", "Phones make streets narrower", "Headphones improve balance", "Screens stop moving cars"],
+          ["What must drivers do when they hear a siren or see flashing lights of an ambulance or fire truck?", "Pull over safely and give clear, immediate right-of-way so emergency help arrives fast", "Race ahead of the ambulance", "Ignore the siren completely", "Stop right in front of it"],
+          ["Why is driving or riding above safe speed limits hazardous?", "Higher speed increases stopping distance and makes crashes far more severe", "High speed shortens braking distance", "Speed limits are only for bicycles", "Fast driving prevents skids"],
+          ["Why is honking excessively near hospitals, schools, and quiet neighborhoods discouraged?", "Unnecessary horn noise creates stress, disturbs patients and students, and adds noise pollution", "Honking makes traffic lights turn green", "Horns cool down engines", "Quiet zones have no roads"],
+          ["What should a person do if they witness a road accident?", "Stay calm, move to a safe spot, call emergency services right away, and help without crowding the scene", "Block traffic with gawking crowds", "Drive away without caring", "Take photos instead of calling help"],
+          ["Why should cyclists ride predictably and use lights or reflectors in low light?", "Being visible and signaling turns helps drivers anticipate a cyclist's movement", "Cyclists never need to signal", "Dark clothes are safest at night", "Bicycles do not share roads"],
+          ["What is a 'blind spot' around large vehicles like trucks or buses?", "Areas near the sides, front, or rear where the driver cannot easily see smaller road users in mirrors", "A flat tire", "A broken headlight", "A toll booth"],
+          ["Why is patience important during heavy traffic jams?", "Impatient weaving and aggressive driving raise collision risk without solving congestion", "Honking pushes cars through walls", "Traffic clears faster with anger", "Rules pause in traffic jams"],
+          ["What is the safest way to get off a school bus or public bus?", "Wait until the bus stops completely, step down carefully, and never cross right in front without checking", "Jump off while the bus is rolling", "Push classmates in the doorway", "Run behind the bus blindly"],
+          ["Why should underage youth never drive motorized vehicles on public roads?", "They lack legal licensing, full training, and maturity to handle complex traffic risks safely", "Underage driving saves money", "Licenses are just paper cards", "Traffic rules exempt young drivers"],
+          ["Why is keeping roads and sidewalks free of loose gravel, puddles, and obstacles important?", "Slippery or blocked surfaces cause skids, falls, and dangerous swerves", "Obstacles make roads more fun", "Puddles improve tire grip", "Sidewalks are for storing goods"],
+          ["How does following lane markings help traffic flow smoothly?", "Lanes organize movement so vehicles going different speeds or turning do not surprise one another", "Lane lines are purely decorative", "Changing lanes without looking is safe", "Lanes only exist on bridges"],
+          ["Why should drivers slow down even more during rain, fog, or wet roads?", "Wet or low-visibility roads reduce tire grip and shorten how far ahead hazards can be seen", "Rain makes brakes work twice as fast", "Fog makes headlights useless", "Wet roads have extra traction"],
+          ["What does 'defensive road behavior' mean for a citizen?", "Staying alert to others' mistakes, keeping safe distance, and acting cautiously to prevent harm", "Driving aggressively to intimidate others", "Ignoring all other vehicles", "Assuming nobody else makes mistakes"],
+          ["What is the central civic lesson of road safety?", "Every life on the street matters—careful, lawful choices keep you and your community safe", "Traffic rules are optional inconveniences", "Only drivers need road awareness", "Speed is more important than safety"]
+        ]
+      },
+      {
+        id: "digital-citizenship-online-safety",
+        title: "Digital Citizenship & Online Safety",
+        badge: "Module 4 • Cyber Ethics & Safety",
+        iconKey: "shield",
+        colorClass: "bg-indigo-50 text-indigo-700",
+        desc: "Build strong passwords, two-factor protection, privacy awareness, fact-checking habits, and respectful online conduct.",
+        passage: [
+          "Digital tools connect students to classrooms, libraries, coding projects, and communities around the world. Being a responsible digital citizen means using online platforms ethically, protecting personal and family data, verifying information before sharing it, and treating every person behind a screen with respect.",
+          "Strong account security starts with strong habits. Never reuse the same weak password across accounts; use long, unique passphrases and turn on two-factor authentication (2FA) wherever available so a stolen password alone cannot unlock an account. Keep devices and apps updated so security fixes are applied promptly.",
+          "Online scams and privacy risks often rely on urgency, curiosity, or oversharing. Phishing messages, fake links, unexpected requests for one-time passwords (OTPs) or PINs, and suspicious downloads can compromise accounts or devices. Likewise, sharing private details—such as home addresses, school schedules, passwords, or private photos of classmates without consent—creates lasting digital footprints that are hard to erase.",
+          "Healthy digital citizenship also means fighting misinformation and cyberbullying. Pause before forwarding sensational claims or manipulated media, check reliable sources, respect copyright and fair credit when researching, and stand up kindly against online harassment by reporting abuse and supporting targets."
+        ],
+        coreFacts: [
+          ["Account Defense", "Use unique strong passwords, two-factor authentication (2FA), and timely software updates."],
+          ["Privacy & Scam Guard", "Never share OTPs/PINs, avoid suspicious links, and protect personal and classmates' privacy."],
+          ["Truth & Kindness", "Verify claims before sharing, respect credit/copyright, and reject cyberbullying."]
+        ],
+        uniqueQuestions: [
+          ["What is a key pillar of responsible digital citizenship?", "Using technology ethically, protecting privacy, verifying facts, and treating others respectfully online", "Posting whatever you want without care", "Sharing everyone's private details", "Ignoring online safety rules"],
+          ["Why should you avoid using the same simple password across multiple online accounts?", "If one account is exposed, attackers can try that same password on your other accounts", "Passwords expire after ten minutes", "Websites forbid strong passwords", "Short passwords load faster"],
+          ["How does two-factor authentication (2FA) add extra protection to an account?", "It requires a second verification step beyond just your password before signing in", "It posts your password publicly", "It turns off all account alerts", "It removes the need for a password"],
+          ["What is 'phishing' in everyday online safety?", "Deceptive messages or fake pages tricking people into revealing passwords, codes, or personal info", "Catching fish in a digital game", "Saving a document to a folder", "Updating a browser bookmark"],
+          ["Why should you NEVER share a One-Time Password (OTP) or PIN with callers or messages?", "OTPs and PINs are secret access codes that can let unauthorized people take over accounts or funds", "OTPs are public numbers for everyone", "Sharing OTPs speeds up internet delivery", "Codes never grant access to accounts"],
+          ["What is a 'digital footprint'?", "The trail of posts, comments, searches, and shared photos or data left online over time", "A mark left on a glass screen", "A type of computer cable", "A Wi-Fi router name"],
+          ["Why should you ask permission before posting or sharing a photo or video of a friend online?", "Respecting others' consent and privacy protects their dignity and prevents unwanted exposure", "Photos cannot be shared with permission", "Friends never care about privacy", "Posting without asking is required"],
+          ["What should you do if you see a classmate being cyberbullied or mocked in a group chat?", "Avoid joining in or forwarding mean posts, save evidence if needed, support the peer, and report to a trusted adult", "Forward the joke to more chats", "Reply with harsh insults", "Pretend bullying is harmless fun"],
+          ["Why is it important to check facts before forwarding sensational news or viral claims?", "Unverified posts spread misinformation, fear, and false rumors across families and communities", "Viral forwards are always 100% true", "Checking facts slows down messaging", "Rumors help people learn better"],
+          ["Why is downloading untrusted 'free' programs or clicking random pop-up links risky?", "They can install harmful software, steal data, or lead to deceptive scam pages", "Pop-ups always give free rewards", "Untrusted files clean viruses", "Random links improve battery life"],
+          ["Why is keeping your operating system and apps updated important for security?", "Updates patch known security flaws so attackers cannot easily exploit older bugs", "Updates delete all schoolwork", "Updates make screens black and white", "Updates remove passwords"],
+          ["What does giving proper credit when using online articles, images, or code show?", "Honesty, respect for creators' work, and academic integrity", "Copying everything as your own work", "Hiding where information came from", "Ignoring all authors' rights"],
+          ["Why should you be cautious when using public or shared Wi-Fi networks?", "Unsecured public networks can expose sensitive activity if you enter private credentials", "Public Wi-Fi never connects devices", "Shared Wi-Fi blocks all websites", "Public Wi-Fi is encrypted by default"],
+          ["What should you do on a shared computer (like a school lab PC) after finishing your session?", "Log out of your accounts and close private tabs so the next user cannot access your profile", "Leave your account signed in", "Unplug the monitor cables", "Delete other students' files"],
+          ["Why should you avoid oversharing your exact home address or daily routine publicly online?", "Publicly exposing location and personal details can create real-world safety and privacy risks", "Addresses make profiles look cool", "Strangers need your home address", "Location data is always private"],
+          ["What is a smart habit when an online message creates sudden panic or too-good-to-be-true rewards?", "Pause, think critically, verify through official channels, and avoid rushing to click or reply", "Act immediately in panic", "Send personal details right away", "Trust every urgent warning"],
+          ["Why is 'digital empathy' essential in online discussions?", "Remembering real feelings behind every username encourages constructive, respectful communication", "Screens hide human emotions completely", "Online arguments require hostility", "Empathy only exists face-to-face"],
+          ["What is 'cyberbullying'?", "Repeatedly harassing, threatening, excluding, or humiliating someone through digital platforms or messages", "Helping a classmate study online", "Sharing a helpful coding tip", "Polite teamwork in a game"],
+          ["Why should young learners balance screen time with offline activities, sleep, and outdoor play?", "Balanced routines support healthy sleep, focus, physical health, and real-world friendships", "Screens replace sleep completely", "Outdoor time harms learning", "Balance is only for athletes"],
+          ["If an account looks hacked or behaves strangely, what is a sensible first step?", "Change the password immediately to a strong unique one, check security settings, and inform a trusted adult", "Ignore strange logins", "Share the password with everyone", "Create ten more identical passwords"],
+          ["Why should educational apps follow privacy-first data practices?", "Students should be able to learn safely without unnecessary tracking or invasive data collection", "Apps need maximum personal data", "Privacy blocks educational progress", "Student data has no value"],
+          ["What is 'misinformation' in digital spaces?", "False or inaccurate information shared regardless of whether harm was originally intended", "Accurate textbook facts", "Verified scientific data", "Honest project notes"],
+          ["Why is listening to calm advice from parents or teachers important when facing an online problem?", "Trusted adults can help evaluate risks fairly and guide safe next steps", "Adults never understand technology", "Hiding problems solves them faster", "Asking for help is a weakness"],
+          ["What does 'respectful online communication' look like during group coding or study chats?", "Clear, polite feedback focused on ideas and solutions rather than personal attacks", "Sarcasm and insults in every reply", "Ignoring teammates' questions", "Shouting in all caps constantly"],
+          ["What is the core takeaway of digital citizenship?", "Safe, truthful, and respectful online habits protect individuals and strengthen digital communities", "Anything goes on the internet", "Privacy does not matter online", "Only IT experts need cyber awareness"]
+        ]
+      },
+      {
+        id: "public-hygiene-waste-management",
+        title: "Public Hygiene & Waste Management",
+        badge: "Module 5 • Cleanliness & Sanitation",
+        iconKey: "recycle",
+        colorClass: "bg-emerald-50 text-emerald-700",
+        desc: "Learn waste segregation at source, reducing single-use plastics, composting, safe disposal, and public sanitation.",
+        passage: [
+          "Public hygiene and effective waste management are foundational to community health and clean neighborhoods. When garbage is left scattered or mixed carelessly, it attracts pests, spreads illness, clogs drains, pollutes soil and water, and makes shared public spaces unpleasant for everyone.",
+          "Segregating waste at the source—right where it is generated in homes, classrooms, and shops—makes recycling and safe treatment far more effective. Separating organic/wet waste (such as fruit and vegetable scraps or garden leaves) from dry recyclables (such as clean paper, cardboard, metal cans, and rinsed plastics) prevents contamination so valuable materials can be recovered instead of wasted.",
+          "Reducing waste at the source is even more powerful than managing trash afterward. Carrying reusable bags and bottles, refusing unnecessary single-use plastics, repairing items when possible, and composting organic kitchen waste into soil enricher all reduce the burden on collection systems and landfills.",
+          "Special care is needed for hazardous items—such as used batteries, electronics, sharp glass, or medical waste—so they do not harm sanitation workers or wildlife. Respecting sanitation workers, using bins properly, and holding onto litter until a bin is available are everyday signs of civic pride."
+        ],
+        coreFacts: [
+          ["Source Segregation", "Separate organic/wet waste from clean dry recyclables right at the point of use."],
+          ["Reduce & Reuse First", "Cut single-use plastics, use reusables, and compost organic waste naturally."],
+          ["Safe & Respectful Care", "Handle sharp or hazardous waste safely, keep drains clear, and value sanitation workers."]
+        ],
+        uniqueQuestions: [
+          ["Why is segregating waste at the source so important for clean cities?", "Keeping waste streams separate prevents contamination and makes recycling and composting much easier", "Mixed waste is easier to recycle", "Sanitation workers prefer unseparated trash", "Segregation increases garbage volume"],
+          ["Which items generally belong in organic / wet waste for composting?", "Fruit and vegetable peels, food scraps, tea leaves, and garden trimmings", "Broken glass bottles", "Old mobile batteries", "Plastic grocery bags"],
+          ["Which items generally belong in dry recyclable waste when clean and dry?", "Clean paper, cardboard, glass containers, metal cans, and clean recyclable plastics", "Wet banana peels", "Spoiled food soup", "Dirty mop water"],
+          ["What happens when wet food waste is mixed into dry paper and cardboard?", "Moisture and food residue stain and ruin paper fibers, making recycling harder or impossible", "Paper turns into stronger steel", "Water makes cardboard lighter", "Nothing changes at all"],
+          ["Why is reducing single-use plastics a major social awareness priority?", "Single-use plastics linger in the environment, litter streets and waterways, and harm wildlife", "Single-use plastics dissolve in minutes", "Plastic improves soil fertility", "There is no alternative to single-use bags"],
+          ["What is a practical way a student can reduce single-use plastic waste at school?", "Carry a reusable water bottle and cloth bag instead of relying on disposable cups or bags", "Throw wrappers on the floor", "Ask for extra plastic bags daily", "Leave bottles in the playground"],
+          ["What is composting in simple terms?", "Natural breakdown of organic waste by microorganisms into nutrient-rich soil conditioner", "Burning plastic in open air", "Burying glass jars in parks", "Washing trash with soap"],
+          ["How does composting kitchen and garden scraps benefit the environment?", "It turns organic waste into useful compost for plants and reduces organic waste sent to dumps", "It creates toxic smoke", "It pollutes groundwater", "It destroys garden soil"],
+          ["Why must sharp broken glass or blades be wrapped safely before disposal?", "To protect sanitation workers and others from painful cuts and injuries", "To make bins look colorful", "Because glass melts in bins", "Sharp items are harmless"],
+          ["Why should batteries, electronics, and hazardous items not be tossed casually into ordinary trash?", "They can contain harmful substances or pose safety and environmental hazards if mishandled", "Batteries grow into trees", "Electronics are made of sugar", "Hazardous waste cleans the air"],
+          ["What does 'Reduce, Reuse, Recycle' teach citizens about handling resources?", "First use less and reuse items, and recycle what remains rather than treating everything as disposable", "Buy more and throw away faster", "Recycle is the only step that matters", "Reusing items is against rules"],
+          ["If you are in a park or street and there is no dustbin right beside you, what should you do with a wrapper?", "Keep it safely in your bag or pocket until you reach a proper dustbin", "Drop it behind a bush or bench", "Kick it into a storm drain", "Leave it for someone else to pick up"],
+          ["How does littering on streets contribute to local flooding during heavy rain?", "Litter washes into drains and blocks water flow, causing waterlogging on roads", "Trash absorbs rainwater like a sponge", "Litter makes roads drain faster", "Drains never clog"],
+          ["Why is respecting sanitation and cleanliness workers an important part of social awareness?", "They perform essential daily work that keeps public health safe and neighborhoods livable", "Cleanliness happens without any workers", "Only sweepers are responsible for cleanliness", "Respect only applies to famous people"],
+          ["What is 'upcycling'?", "Reusing discarded materials creatively to make something useful or functional again", "Throwing away working items", "Burning old clothes", "Dumping waste in rivers"],
+          ["Why should open burning of garbage or dry leaves in neighborhoods be avoided?", "Burning releases harmful smoke and pollutants that irritate lungs and degrade air quality", "Smoke makes air fresher", "Burning leaves creates clean water", "Air pollution only happens indoors"],
+          ["How can a classroom maintain high standards of daily hygiene?", "Use bins properly, keep desks and floors tidy, wash hands before eating, and share cleanup care", "Leave snack crumbs everywhere", "Use desks as trash bins", "Ignore spills on the floor"],
+          ["Why is handwashing with soap and clean water a vital public health habit?", "It removes germs that cause illnesses and helps stop infections from spreading in schools and homes", "Germs only live on ceilings", "Soap works without water", "Handwashing is only needed once a month"],
+          ["What does keeping public restrooms and shared facilities clean show about a community?", "Mutual care, consideration for the next user, and shared responsibility for public spaces", "Public spaces do not need care", "Only cleaners should care about hygiene", "Messiness is a sign of freedom"],
+          ["Why is rinsing food containers before putting them in dry recycling helpful?", "It prevents odors, pests, and contamination of other recyclable materials", "Water turns plastic into glass", "Rinsing makes containers heavier", "Dirty containers recycle better"],
+          ["How can students encourage cleaner habits without sounding preachy or rude?", "Lead by example, share helpful reminders kindly, and organize positive school clean-up efforts", "Shame or insult classmates loudly", "Throw trash to test others", "Give up if one person litters"],
+          ["What is the link between public hygiene and disease prevention?", "Clean surroundings, safe waste handling, and hygiene reduce pests and germs that spread sickness", "Dirty surroundings prevent illness", "Hygiene has no effect on health", "Pests only appear in clean rooms"],
+          ["Why should food scraps never be thrown into sinks or drainage pipes?", "Food scraps and grease can clog pipes and attract pests in drainage lines", "Pipes digest food into vitamins", "Grease cleans drainpipes", "Sinks are meant for solid waste"],
+          ["What does a 'clean neighborhood' depend on most in daily life?", "Consistent everyday habits by residents combined with reliable municipal waste systems", "Occasional one-day speeches only", "Ignoring everyday litter", "Blaming everyone else"],
+          ["What is the core message of public hygiene and waste management?", "Clean spaces protect health and dignity—every person's daily choices shape our shared environment", "Trash disappears on its own", "Cleanliness is optional in public", "Waste has no impact on communities"]
+        ]
+      },
+      {
+        id: "democratic-participation-local-governance",
+        title: "Democratic Participation & Local Governance",
+        badge: "Module 6 • Civic Voice & Local Rule",
+        iconKey: "landmark",
+        colorClass: "bg-indigo-50 text-indigo-700",
+        desc: "Discover how local councils, panchayats, municipalities, civic budgets, public dialogue, and informed citizenship work.",
+        passage: [
+          "Democracy is not limited to occasional national events; it lives every day in local communities, towns, cities, and villages. Local self-government brings decision-making closer to the people who experience local roads, water supply, lighting, parks, markets, and schools firsthand.",
+          "In rural and urban communities alike, local councils and assemblies—such as village assemblies and panchayats or town and city municipalities—work to address neighborhood needs and manage local civic services. Because local leaders and officials live near the issues they handle, community feedback can help identify practical solutions quickly and fairly.",
+          "Democratic participation thrives when citizens stay informed, listen respectfully across differences, ask thoughtful questions, and take part in lawful civic processes. Even before reaching voting age, students practice democratic habits in student councils, school clubs, community surveys, and constructive discussions about real local problems.",
+          "Accountability and transparency keep local governance strong. Citizens can learn how public funds and local services work, share constructive proposals rather than mere complaints, pay fair civic dues when applicable, and cooperate peacefully so local institutions serve the common good."
+        ],
+        coreFacts: [
+          ["Close-to-Home Rule", "Local governance addresses everyday community needs like water, streets, lighting, and sanitation."],
+          ["Active & Informed Voice", "Democracy grows through informed opinions, respectful debate, and constructive participation."],
+          ["Accountability & Service", "Transparency, fair rules, and citizen engagement help public institutions serve everyone."]
+        ],
+        uniqueQuestions: [
+          ["Why is local self-government important in a democracy?", "It brings decisions closer to local communities so everyday neighborhood needs can be addressed directly", "It removes all local responsibilities", "Local issues never affect daily life", "Only distant capitals know local streets"],
+          ["Which everyday services are closely tied to local community governance?", "Local streets, street lighting, sanitation, local water supply, and neighborhood parks", "Space rockets and deep-sea cables", "International treaties", "Foreign currency exchange"],
+          ["How can young students practice democratic participation before they are old enough to vote?", "By joining student councils, debating ideas respectfully, listening to others, and helping solve school issues", "By refusing to listen to any other view", "By ignoring school rules", "By thinking young people have no voice"],
+          ["What makes a classroom or community discussion truly democratic?", "Listening attentively to different viewpoints, speaking respectfully, and deciding fairly", "Shouting down anyone who disagrees", "Ignoring quieter participants", "Changing rules mid-debate to win"],
+          ["Why does staying informed on civic issues matter for every citizen?", "Informed citizens can tell facts from rumors and make thoughtful, fair choices", "Guessing blindly is always better", "Information harms decision-making", "Only politicians need facts"],
+          ["What is the difference between constructive civic feedback and mere complaining?", "Constructive feedback identifies the real issue clearly and suggests practical, fair improvements", "Constructive feedback attacks people personally", "Complaining always solves problems alone", "There is no difference between them"],
+          ["Why is transparency important in how public funds and local projects are handled?", "Clear public information builds trust and helps verify that resources are used fairly", "Secret spending builds stronger trust", "Public records are never useful", "Transparency slows down honesty"],
+          ["What does 'accountability' mean for public institutions and leaders?", "Being answerable to the law and the community for decisions, actions, and use of public resources", "Never having to explain decisions", "Avoiding all public feedback", "Operating above rules"],
+          ["Why is inclusion of diverse voices—including women, youth, and underrepresented groups—vital in local decisions?", "Different life experiences reveal blind spots and help shape fairer solutions for the whole community", "Limiting voices makes decisions fairer", "Only one group knows every need", "Inclusion complicates simple fairness"],
+          ["How does peaceful dialogue help resolve disagreements in a community?", "It allows people with different interests to find fair, lawful common ground without harm", "Violence settles disagreements permanently", "Ignoring disagreements makes them vanish", "Dialogue is only for formal speeches"],
+          ["Why should citizens respect democratic outcomes even when their preferred side does not win?", "Peaceful acceptance of fair rules keeps society stable and allows future participation", "Losing means breaking all rules", "Elections only matter if one side wins", "Stability is unimportant in democracy"],
+          ["How can a student research a real local issue—such as a broken streetlight or unsafe crossing—responsibly?", "Observe the facts carefully, note location and impact, and share clear details with responsible authorities or mentors", "Spread exaggerated rumors online", "Blame random people without proof", "Ignore safety hazards completely"],
+          ["Why do local assemblies or community meetings matter in villages and towns?", "They give residents a forum to voice local concerns, review priorities, and participate in community life", "Meetings are only for taking attendance", "Residents have no role in local life", "Community input is never helpful"],
+          ["What is a key habit of an active, responsible citizen?", "Balancing personal interests with fairness and care for the wider community", "Putting self-interest above everyone else", "Staying silent when rules are broken", "Avoiding all community involvement"],
+          ["How can a school coding or civic project reflect democratic values?", "By designing clear, accessible tools that inform users fairly without bias or manipulation", "By hiding how features work", "By excluding users who need help", "By prioritizing clickbait over truth"],
+          ["Why is respecting differing opinions without personal hostility a mark of maturity?", "People can disagree on policies or ideas while still treating each other with basic human respect", "Disagreement means someone is an enemy", "Respect requires agreeing 100% always", "Hostility persuades people better"],
+          ["What role do fair rules play in keeping a community or organization running smoothly?", "Clear, consistent rules protect fairness, prevent favoritism, and guide everyone predictably", "Rules should change for favorites", "Fairness means having no rules at all", "Rules only exist to punish people"],
+          ["Why is community service or volunteering valuable for civic learning?", "It builds empathy, connects classroom learning to real people, and strengthens neighborhood ties", "Volunteering wastes free time", "Communities never need helping hands", "Service only helps people with no skills"],
+          ["How does paying fair public taxes or civic fees support community life?", "Public funds help pay for shared infrastructure, public services, and community facilities", "Public services appear for free magically", "Taxes are meant for private luxury", "Communities need no shared resources"],
+          ["What should citizens do if they spot a rule or service that is unfair or ineffective?", "Speak up constructively through lawful, peaceful channels to seek fair reform", "Break every law in protest", "Give up and stop caring", "Spread false claims"],
+          ["Why is 'active listening' essential in civic leadership and teamwork?", "Truly hearing others' concerns helps uncover real problems before jumping to conclusions", "Interrupting shows strong leadership", "Listening means waiting to attack", "Only speaking matters in teams"],
+          ["How does local civic awareness connect to national democracy?", "Strong, informed local participation builds the foundation for a responsive, healthy nation", "Local life is separate from democracy", "National issues ignore local reality", "Only national news matters"],
+          ["What happens when citizens stay completely indifferent to local public affairs?", "Decisions may overlook everyday needs and accountability can weaken over time", "Local problems solve themselves automatically", "Indifference improves public services", "Leaders read everyone's mind"],
+          ["Why is fairness in sharing community spaces—like playgrounds and reading rooms—important?", "Shared spaces belong to everyone, so fair turns and care let all members enjoy them", "First person to arrive owns it forever", "Shared spaces are only for one group", "Careless use improves facilities"],
+          ["What is the central takeaway of democratic participation and local governance?", "Democracy works best when informed, respectful citizens actively care for and participate in their community", "Democracy only happens once every few years", "Citizens have no role between elections", "Local governance does not affect daily life"]
+        ]
+      },
+      {
+        id: "environmental-protection-climate-action",
+        title: "Environmental Protection & Climate Action",
+        badge: "Module 7 • Earth & Climate Care",
+        iconKey: "leaf",
+        colorClass: "bg-emerald-50 text-emerald-700",
+        desc: "Explore biodiversity, clean air and energy choices, climate awareness, tree stewardship, and sustainable everyday action.",
+        passage: [
+          "Every human community depends on a living planet—clean air to breathe, healthy soil to grow food, stable climate patterns, and rich biodiversity from forests and oceans to pollinators and wetlands. Environmental protection and climate action are urgent social responsibilities because pollution and greenhouse gas emissions affect everyone, especially vulnerable communities and future generations.",
+          "Climate change refers to long-term shifts in temperatures and weather patterns, driven largely by human activities such as burning fossil fuels, deforestation, and unsustainable land and resource use. Warming trends and extreme weather events—like intense heatwaves, heavy downpours, droughts, and shifting seasons—remind us why reducing emissions and building climate resilience matter now.",
+          "Everyday actions at home, school, and in neighborhoods add up when practiced consistently. Saving electricity by switching off unused lights and appliances, choosing walking, cycling, or public transit for short trips when safe, planting and caring for native trees, and avoiding open burning all help lower emissions and keep local air cleaner.",
+          "Protecting biodiversity and natural habitats is equally essential. Native trees, grasslands, wetlands, and wildlife form interconnected ecosystems that regulate climate, support pollination, and keep nature balanced. Social awareness turns environmental concern into steady habits, informed choices, and community cooperation."
+        ],
+        coreFacts: [
+          ["Living Ecosystems", "Clean air, healthy soil, forests, and biodiversity sustain life and human well-being."],
+          ["Climate Action", "Cutting emissions, saving energy, and building resilience help address climate shifts."],
+          ["Everyday Stewardship", "Switching off idle power, walking/cycling when safe, caring for trees, and avoiding burning help."]
+        ],
+        uniqueQuestions: [
+          ["Why is environmental protection a social awareness issue rather than just a science topic?", "Environmental harm affects human health, livelihoods, safety, and fairness across communities and generations", "Pollution only affects distant planets", "Humans do not depend on nature", "Environmental issues never impact people"],
+          ["What does 'biodiversity' mean in simple terms?", "The variety of living plants, animals, fungi, and microorganisms and the ecosystems they form", "A single type of grass in one pot", "Non-living rocks on Mars", "Artificial plastic flowers"],
+          ["Why is protecting native trees and local green cover important in towns and cities?", "Trees provide shade, support wildlife, help cool heat islands, and improve local environments", "Trees block all sunlight forever", "Cities do not need green spaces", "Trees create air pollution"],
+          ["What is a simple daily energy-saving habit students can practice at home and school?", "Switch off lights, fans, and screens when leaving a room or when not in use", "Leave all lights on all day", "Keep unused devices running constantly", "Open fridge doors for fun"],
+          ["Why does saving electricity help with climate action?", "Much electricity generation still relies on fossil fuels, so using less power reduces emissions", "Electricity comes from empty air", "Using more power cools the planet", "Lights use zero energy"],
+          ["How do walking, cycling, or using public transit help when practical?", "They can reduce traffic congestion and lower fuel emissions compared to solo short car trips", "Bicycles create heavy exhaust smoke", "Walking increases air pollution", "Public transit never helps cities"],
+          ["What is 'climate change' in everyday terms?", "Long-term shifts in Earth's temperatures and weather patterns, largely driven by human greenhouse gas emissions", "A single rainy afternoon", "Normal seasonal change over one week", "Changes in phone screen brightness"],
+          ["Why do extreme weather events—such as heavy downpours or heatwaves—highlight climate action?", "They show how changing climate patterns test community infrastructure, health, and preparedness", "Weather never affects people or farms", "Heatwaves make cities cooler", "Extreme storms never cause damage"],
+          ["Why is planting the right native tree in the right spot better than random planting alone?", "Native species suit local soil and rainfall and need ongoing care so young saplings survive", "Saplings never need water or care", "Any tree survives on bare rock", "Caring for trees ends on planting day"],
+          ["How does protecting wetlands, mangroves, and forests help communities face climate impacts?", "Natural ecosystems buffer storms, store carbon, prevent erosion, and support water and food systems", "Cutting forests prevents landslides", "Wetlands cause droughts", "Nature has no protective role"],
+          ["Why is avoiding open fires and burning of waste or crop residue important for air quality?", "Burning releases smoke and fine particles that harm lungs, worsen smog, and add greenhouse gases", "Smoke cleans polluted air", "Burning waste heals asthma", "Ash improves air visibility"],
+          ["What is 'climate resilience' for a school or neighborhood?", "Being prepared and adaptable—such as having shade, water care, drainage care, and heat/storm readiness", "Ignoring weather risks completely", "Pretending seasons never change", "Waiting until emergencies strike"],
+          ["How does buying durable, reusable goods instead of disposable ones support environmental care?", "It lowers raw material extraction, manufacturing emissions, and waste generation", "Disposable goods save all natural resources", "Manufacturing uses no energy or materials", "Durability increases trash"],
+          ["Why do pollinators—like bees, butterflies, and birds—matter to people?", "They help pollinate many fruits, vegetables, and flowering plants essential for food and ecosystems", "Pollinators destroy all crops", "Food grows without pollination", "Insects have no ecological role"],
+          ["What is the 'urban heat island' effect?", "Built-up areas with lots of heat-absorbing surfaces and little greenery becoming warmer than nearby rural areas", "A tropical island made of volcanoes", "A cooling breeze in parks", "A winter snowstorm"],
+          ["How can green spaces and tree cover help ease urban heat?", "Shade blocks direct sun and plant transpiration helps cool surrounding air", "Concrete cools faster than trees", "Trees reflect heat onto houses", "Shade makes air hotter"],
+          ["Why is caring for soil health important for sustainable food and ecosystems?", "Healthy soil holds moisture, cycles nutrients, supports plants, and stores carbon", "Soil is just dead dirt with no value", "Healthy soil stops crops from growing", "Erosion improves farmland"],
+          ["What does 'carbon footprint' refer to in sustainability discussions?", "The total greenhouse gas emissions caused directly or indirectly by a person, product, or activity", "A black mark on a shoe", "A measurement of rainfall", "A type of tree leaf"],
+          ["Why is community action important alongside individual habits in climate protection?", "Shared neighborhood projects, school initiatives, and public policies multiply impact far beyond one person", "Individual habits are completely useless", "Only one person can fix climate issues", "Community action slows progress"],
+          ["How can students learn and share reliable climate and ecology information?", "By checking trusted scientific and educational sources and explaining concepts clearly without fear-mongering", "By sharing exaggerated myths", "By ignoring scientific evidence", "By copying unverified claims"],
+          ["Why does protecting rivers and oceans matter for climate and life?", "Oceans and rivers regulate climate, support marine life, and sustain water and food cycles", "Oceans have no link to climate", "Dumping waste helps marine life", "Rivers do not connect to ecosystems"],
+          ["What is a helpful way to start an eco-friendly habit with classmates?", "Start small and consistent—like a classroom energy check, plant care rota, or awareness poster", "Try to change the whole world in one minute", "Give up if progress is gradual", "Keep ideas secret"],
+          ["Why is energy efficiency ('doing more with less energy') smart for both families and the planet?", "It lowers energy bills for households while cutting unnecessary fuel demand and emissions", "Efficiency wastes extra electricity", "Energy bills go up when saving power", "Efficiency is only for factories"],
+          ["How does respecting wildlife and avoiding harm to stray or wild animals show social awareness?", "Animals share our environment and deserve humane, peaceful treatment rather than cruelty or disturbance", "Harming animals builds courage", "Wildlife belongs in cages everywhere", "Humane care is unimportant"],
+          ["What is the core takeaway of environmental protection and climate action?", "Protecting nature and taking steady climate action safeguards clean air, water, food, and our shared future", "Earth's resources can never be strained", "Climate shifts have no impact on society", "Environmental care can wait forever"]
+        ]
+      }
+    ];
+
+    function buildUniqueQuestionsForModule(mod) {
+      const targetCount = 110;
+      const seen = new Set();
+      const result = [];
+
+      const rawItems = mod.uniqueQuestions || [];
+      for (let i = 0; i < rawItems.length && result.length < targetCount; i++) {
+        const entry = rawItems[i];
+        const qText = String(entry[0]).trim();
+        const normKey = qText.toLowerCase();
+        if (seen.has(normKey)) continue;
+        seen.add(normKey);
+
+        const baseOptions = [String(entry[1]), String(entry[2]), String(entry[3]), String(entry[4])];
+        const explanation = String(entry[5]);
+
+        // Rotate options deterministically by index so correct answers vary across 0..3 while keeping every question unique
+        const shift = result.length % 4;
+        const rotated = [0, 1, 2, 3].map(idx => baseOptions[(idx + shift) % 4]);
+        const correctIndex = (0 - shift + 4) % 4;
+
+        result.push({
+          question: qText,
+          options: rotated,
+          correctIndex,
+          explanation
+        });
+      }
+
+      // If ever fewer than 110 unique items are in rawItems, synthesize strictly distinct, topic-anchored items
+      let synthIdx = 1;
+      while (result.length < targetCount) {
+        const sec = mod.passage[synthIdx % mod.passage.length];
+        const fact = mod.coreFacts[synthIdx % mod.coreFacts.length];
+        const qText = `[${mod.title} • Case #${synthIdx}] Which statement best reflects "${fact[0]}" in this module?`;
+        const normKey = qText.toLowerCase();
+        if (!seen.has(normKey)) {
+          seen.add(normKey);
+          const opts = [
+            fact[1],
+            "Ignoring community rules and acting solely on impulse",
+            "Assuming public resources require no care or fairness",
+            "Treating civic responsibilities as irrelevant to daily life"
+          ];
+          const shift = result.length % 4;
+          const rotated = [0, 1, 2, 3].map(idx => opts[(idx + shift) % 4]);
+          const correctIndex = (0 - shift + 4) % 4;
+
+          result.push({
+            question: qText,
+            options: rotated,
+            correctIndex,
+            explanation: fact[1] + " (" + sec.slice(0, 95).trim() + "...)"
+          });
+        }
+        synthIdx++;
+      }
+
+      return result;
+    }
+
+    CIVIC_MODULES.forEach(mod => {
+      mod.quizzes = buildUniqueQuestionsForModule(mod);
+    });
+
+    const DAILY_CHALLENGES = [
+      {
+        question: "In a group project, a teammate's idea differs from yours. What is the most democratic and civic approach?",
+        options: [
+          "Listen respectfully, weigh facts and fairness together, and decide constructively",
+          "Dismiss their idea immediately without hearing it",
+          "Stop participating unless everyone agrees with you",
+          "Share personal insults in a chat group"
+        ],
+        correctIndex: 0,
+        explanation: "Democratic participation relies on respectful listening, evidence, and fairness."
+      },
+      {
+        question: "You notice a tap dripping steadily in a school washroom. What is the most helpful civic action?",
+        options: [
+          "Report it promptly so it can be repaired and save water",
+          "Leave it running at full force",
+          "Ignore it because it is only drips",
+          "Block the drain with paper towels"
+        ],
+        correctIndex: 0,
+        explanation: "Promptly reporting leaks prevents ongoing water waste."
+      },
+      {
+        question: "Someone messages you asking for your account password or one-time code (OTP) urgently. What should you do?",
+        options: [
+          "Never share passwords or OTPs and verify through a trusted official channel",
+          "Send the code right away to avoid trouble",
+          "Post your password publicly to test it",
+          "Use the same password on every site"
+        ],
+        correctIndex: 0,
+        explanation: "Never share secret codes or passwords—protecting credentials prevents account compromise."
+      }
+    ];
+
+    function calculateLevelFromXp(xp) {
+      const safeXp = Math.max(0, Number(xp) || 0);
+      return Math.min(100, Math.floor(safeXp / 3000) + 1);
+    }
+
+    function createFreshState(overrides = {}) {
+      return {
+        username: "",
+        grade: 7,
+        difficulty: "Intermediate",
+        xp: 0,
+        level: 1,
+        streak: 0,
+        completedLessons: [],
+        completedQuizzes: [],
+        moduleQuizProgress: {},
+        moduleMissedFirstTry: {},
+        dailyChallengeAnswered: false,
+        dailyChallengeMissedFirstTry: false,
+        currentView: "auth",
+        activeModuleId: null,
+        ...overrides
+      };
+    }
+
+    let appState = createFreshState();
+    let toastTimeout = null;
+
+    function showToast(title, desc) {
+      const toast = document.getElementById("xp-toast");
+      const titleEl = document.getElementById("toast-title");
+      const descEl = document.getElementById("toast-desc");
+      if (!toast || !titleEl || !descEl) return;
+
+      titleEl.innerText = title;
+      descEl.innerText = desc;
+      toast.classList.add("toast-visible");
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("toast-visible");
+      }, 3400);
+    }
+
+    function checkAndCelebrateLevelUp(previousLevel) {
+      const newLevel = calculateLevelFromXp(appState.xp);
+      appState.level = newLevel;
+
+      if (newLevel > previousLevel) {
+        const modal = document.getElementById("levelup-modal");
+        const titleEl = document.getElementById("levelup-title");
+        const descEl = document.getElementById("levelup-desc");
+        const badgeEl = document.getElementById("levelup-xp-badge");
+
+        if (titleEl) titleEl.innerText = `Congratulations! You reached Level ${newLevel}!`;
+        if (descEl) {
+          descEl.innerText = `You crossed the ${(newLevel - 1) * 3000} XP milestone through first-try accuracy and civic learning! Keep going toward Level 100.`;
+        }
+        if (badgeEl) {
+          badgeEl.innerText = `${appState.xp.toLocaleString()} XP • Level ${newLevel} / 100`;
+        }
+        if (modal) modal.classList.remove("hidden");
+      }
+    }
+
+    function closeLevelUpModal() {
+      const modal = document.getElementById("levelup-modal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function awardFirstTryXp(points, reasonTitle, reasonDesc) {
+      const safePoints = Math.max(0, Number(points) || 0);
+      if (safePoints <= 0) return;
+
+      const prevLevel = calculateLevelFromXp(appState.xp);
+      appState.xp += safePoints;
+      updateHeaderUI();
+      persistState();
+      showToast(reasonTitle || `+${safePoints} XP Earned!`, reasonDesc || `Awarded +${safePoints} XP for a first-try correct answer.`);
+      checkAndCelebrateLevelUp(prevLevel);
+    }
+
+    function persistState() {
+      try {
+        if (window.__civicFirestore && typeof window.__civicFirestore.saveDoc === "function" && appState.username) {
+          window.__civicFirestore.saveDoc(appState).then(ok => {
+            const statusEl = document.getElementById("cloud-sync-status");
+            if (statusEl) {
+              statusEl.innerText = ok ? "Synced to Cloud Firestore" : "Session Active";
+            }
+          }).catch(() => {});
+        }
+      } catch (e) {
+        // Safe fallback: in-memory state remains intact
+      }
+    }
+
+    function updateHeaderUI() {
+      appState.level = calculateLevelFromXp(appState.xp);
+
+      const gradeTierEl = document.getElementById("topbar-grade-tier");
+      const streakEl = document.getElementById("topbar-streak");
+      const xpEl = document.getElementById("topbar-xp");
+      const backBtn = document.getElementById("header-back-btn");
+
+      if (gradeTierEl) gradeTierEl.innerText = `Grade ${appState.grade} • ${appState.difficulty}`;
+      if (streakEl) streakEl.innerText = `${appState.streak} ${appState.streak === 1 ? "Day" : "Days"}`;
+      if (xpEl) xpEl.innerText = `${appState.xp.toLocaleString()} XP • Lvl ${appState.level}`;
+
+      if (backBtn) {
+        if (appState.currentView === "dashboard") {
+          backBtn.classList.add("hidden");
+        } else {
+          backBtn.classList.remove("hidden");
+        }
+      }
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const usernameInput = document.getElementById("auth-username");
+      const gradeSelect = document.getElementById("auth-grade");
+      const diffSelect = document.getElementById("auth-difficulty");
+
+      const rawName = usernameInput ? usernameInput.value.trim() : "";
+      if (!rawName) return;
+
+      const gradeVal = gradeSelect ? parseInt(gradeSelect.value, 10) : 7;
+      const diffVal = diffSelect ? diffSelect.value : "Intermediate";
+
+      // Submitting the login form always resets XP to 0 and streak to 0 (streak always starts at 0)
+      appState = createFreshState({
+        username: rawName,
+        grade: gradeVal,
+        difficulty: diffVal,
+        xp: 0,
+        level: 1,
+        streak: 0,
+        currentView: "dashboard"
+      });
+
+      const header = document.getElementById("global-header");
+      if (header) header.classList.remove("hidden");
+
+      updateHeaderUI();
+      persistState();
+      navigateTo("dashboard");
+      showToast(`Welcome, ${appState.username}!`, "Started fresh with 0 XP and 0 Day streak. First-try right answers earn XP!");
+    }
+
+    function logoutUser() {
+      appState = createFreshState({ currentView: "auth" });
+      const header = document.getElementById("global-header");
+      if (header) header.classList.add("hidden");
+
+      const usernameInput = document.getElementById("auth-username");
+      if (usernameInput) usernameInput.value = "";
+
+      navigateTo("auth");
+      showToast("Signed Out", "Ready for next student login (XP and streak start at 0).");
+    }
+
+    function navigateTo(viewName, moduleId = null) {
+      appState.currentView = viewName;
+      if (moduleId) appState.activeModuleId = moduleId;
+
+      ["view-auth", "view-dashboard", "view-hub", "view-reader"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add("hidden");
+      });
+
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) target.classList.remove("hidden");
+
+      updateHeaderUI();
+
+      if (viewName === "dashboard") {
+        renderDashboard();
+      } else if (viewName === "hub") {
+        renderHub();
+      } else if (viewName === "reader") {
+        renderReader();
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderDashboard() {
+      const welcomeEl = document.getElementById("dash-welcome-name");
+      const subEl = document.getElementById("dash-welcome-sub");
+      const streakEl = document.getElementById("dash-stat-streak");
+      const xpEl = document.getElementById("dash-stat-xp");
+      const lvlEl = document.getElementById("dash-stat-level");
+      const nextLvlLabel = document.getElementById("dash-next-level-label");
+      const nextLvlXp = document.getElementById("dash-next-level-xp");
+      const lvlBar = document.getElementById("dash-level-bar");
+      const modProgEl = document.getElementById("dash-modules-progress");
+      const modBar = document.getElementById("dash-progress-bar");
+
+      const currentLvl = calculateLevelFromXp(appState.xp);
+      appState.level = currentLvl;
+
+      if (welcomeEl) welcomeEl.innerText = `Welcome, ${appState.username || "Citizen"}!`;
+      if (subEl) subEl.innerText = `Grade ${appState.grade} • ${appState.difficulty} Tier • Level ${currentLvl} of 100 (Promotes every 3,000 XP)`;
+      if (streakEl) streakEl.innerText = `${appState.streak} ${appState.streak === 1 ? "Day" : "Days"}`;
+      if (xpEl) xpEl.innerText = `${appState.xp.toLocaleString()} XP`;
+      if (lvlEl) lvlEl.innerText = `Level ${currentLvl} / 100`;
+
+      if (currentLvl >= 100) {
+        if (nextLvlLabel) nextLvlLabel.innerText = "Maximum Level Reached";
+        if (nextLvlXp) nextLvlXp.innerText = "Level 100 / 100";
+        if (lvlBar) lvlBar.style.width = "100%";
+      } else {
+        const xpInCurrentTier = appState.xp % 3000;
+        const pctTier = Math.min(100, Math.round((xpInCurrentTier / 3000) * 100));
+        if (nextLvlLabel) nextLvlLabel.innerText = `Next Promotion (Level ${currentLvl + 1})`;
+        if (nextLvlXp) nextLvlXp.innerText = `${xpInCurrentTier.toLocaleString()} / 3,000 XP`;
+        if (lvlBar) lvlBar.style.width = `${pctTier}%`;
+      }
+
+      const totalMods = CIVIC_MODULES.length;
+      const doneCount = appState.completedQuizzes.length;
+      const pctMods = Math.round((doneCount / totalMods) * 100);
+      if (modProgEl) modProgEl.innerText = `${doneCount} / ${totalMods} Modules`;
+      if (modBar) modBar.style.width = `${pctMods}%`;
+
+      renderDailyChallenge();
+      renderDashboardModulesPreview();
+    }
+
+    function renderDailyChallenge() {
+      const box = document.getElementById("daily-challenge-box");
+      if (!box) return;
+
+      const dayIndex = appState.streak % DAILY_CHALLENGES.length;
+      const ch = DAILY_CHALLENGES[dayIndex];
+
+      if (appState.dailyChallengeAnswered) {
+        const earnedNote = appState.dailyChallengeMissedFirstTry
+          ? "Completed without XP (a wrong option was chosen on the first try)."
+          : "Completed on your first try (+20 XP awarded).";
+
+        box.innerHTML = `
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
+            <p class="font-extrabold text-sm text-emerald-900">Daily Challenge Completed</p>
+            <p class="text-xs text-emerald-800">${earnedNote}</p>
+            <p class="text-xs text-slate-700 pt-1"><strong>Explanation:</strong> ${escapeHtml(ch.explanation)}</p>
+          </div>
+        `;
+        return;
+      }
+
+      box.innerHTML = `
+        <p class="font-bold text-sm text-slate-900 mb-3">${escapeHtml(ch.question)}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          ${ch.options.map((opt, idx) => `
+            <button onclick="answerDailyChallenge(${idx})" class="quiz-option p-3.5 rounded-2xl text-left text-xs font-bold transition cursor-pointer">
+              ${escapeHtml(opt)}
+            </button>
+          `).join("")}
+        </div>
+        <p id="daily-feedback-msg" class="text-xs font-semibold text-slate-600 mt-3"></p>
+      `;
+    }
+
+    function answerDailyChallenge(selectedIndex) {
+      if (appState.dailyChallengeAnswered) return;
+
+      const dayIndex = appState.streak % DAILY_CHALLENGES.length;
+      const ch = DAILY_CHALLENGES[dayIndex];
+      const feedbackEl = document.getElementById("daily-feedback-msg");
+
+      if (selectedIndex === ch.correctIndex) {
+        appState.dailyChallengeAnswered = true;
+        if (!appState.dailyChallengeMissedFirstTry) {
+          appState.streak += 1;
+          awardFirstTryXp(20, "Daily Challenge Mastered!", "+20 XP awarded for answering right on your first try.");
+        } else {
+          updateHeaderUI();
+          persistState();
+          showToast("0 XP Awarded", "Wrong first try locked out XP for this challenge.");
+        }
+        renderDashboard();
+      } else {
+        // Wrong answer on first try: lock out XP for this challenge so clicking right later gives 0 XP
+        appState.dailyChallengeMissedFirstTry = true;
+        persistState();
+        if (feedbackEl) {
+          feedbackEl.className = "text-xs font-bold text-rose-800 mt-3";
+          feedbackEl.innerText = "Not quite on your first try — 0 XP will be awarded for this challenge even if you pick the right option next. Try again to see the solution.";
+        }
+      }
+    }
+
+    function renderDashboardModulesPreview() {
+      const grid = document.getElementById("dashboard-modules-preview");
+      if (!grid) return;
+
+      grid.innerHTML = CIVIC_MODULES.slice(0, 4).map(mod => {
+        const qIndex = appState.moduleQuizProgress[mod.id] || 0;
+        const totalQ = mod.quizzes.length;
+        const pct = Math.min(100, Math.round((qIndex / totalQ) * 100));
+        const iconHtml = MODULE_SVGS[mod.iconKey] || MODULE_SVGS.scale;
+
+        return `
+          <div onclick="navigateTo('reader', '${mod.id}')" class="module-card rounded-2xl p-4 cursor-pointer transition flex flex-col justify-between gap-3">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl ${mod.colorClass} flex items-center justify-center text-lg shrink-0">
+                ${iconHtml}
+              </div>
+              <div class="min-w-0">
+                <h4 class="font-extrabold text-sm text-slate-900 truncate">${escapeHtml(mod.title)}</h4>
+                <p class="text-[11px] text-slate-500 mt-0.5">${totalQ} Unique Questions</p>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[11px] font-bold text-slate-500 mb-1">
+                <span>Quiz Progress</span>
+                <span>${qIndex} / ${totalQ}</span>
+              </div>
+              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="bg-emerald-600 h-full rounded-full" style="width: ${pct}%"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderHub(filterText = "") {
+      const grid = document.getElementById("hub-modules-grid");
+      if (!grid) return;
+
+      const query = filterText.trim().toLowerCase();
+      const filtered = CIVIC_MODULES.filter(mod =>
+        mod.title.toLowerCase().includes(query) ||
+        mod.desc.toLowerCase().includes(query) ||
+        mod.badge.toLowerCase().includes(query)
+      );
+
+      grid.innerHTML = filtered.map(mod => {
+        const qIndex = appState.moduleQuizProgress[mod.id] || 0;
+        const totalQ = mod.quizzes.length;
+        const isMastered = appState.completedQuizzes.includes(mod.id);
+        const iconHtml = MODULE_SVGS[mod.iconKey] || MODULE_SVGS.scale;
+
+        return `
+          <div class="module-card rounded-3xl p-6 shadow-xs flex flex-col justify-between gap-5 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="w-12 h-12 rounded-2xl ${mod.colorClass} flex items-center justify-center text-xl">
+                  ${iconHtml}
+                </div>
+                <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-extrabold">
+                  ${isMastered ? "Completed" : `${qIndex}/${totalQ} Qs`}
+                </span>
+              </div>
+              <p class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 mb-1">${escapeHtml(mod.badge)}</p>
+              <h3 class="text-lg font-extrabold text-slate-900 mb-2">${escapeHtml(mod.title)}</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">${escapeHtml(mod.desc)}</p>
+            </div>
+
+            <button onclick="navigateTo('reader', '${mod.id}')" class="w-full py-3 rounded-xl btn-primary font-extrabold text-xs transition cursor-pointer">
+              ${qIndex > 0 ? "Continue Reading & Quiz" : "Start Module & Quiz"}
+            </button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterHubModules() {
+      const input = document.getElementById("hub-search");
+      renderHub(input ? input.value : "");
+    }
+
+    function renderReader() {
+      const box = document.getElementById("reader-content-box");
+      if (!box) return;
+
+      const mod = CIVIC_MODULES.find(m => m.id === appState.activeModuleId) || CIVIC_MODULES[0];
+      appState.activeModuleId = mod.id;
+
+      const qIndex = appState.moduleQuizProgress[mod.id] || 0;
+      const totalQ = mod.quizzes.length;
+      const isFinished = qIndex >= totalQ;
+      const iconHtml = MODULE_SVGS[mod.iconKey] || MODULE_SVGS.scale;
+
+      let quizHtml = "";
+      if (isFinished) {
+        quizHtml = `
+          <div class="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-3">
+            <h4 class="font-extrabold text-base text-emerald-900">All ${totalQ} Unique Questions Completed!</h4>
+            <p class="text-xs text-emerald-800 leading-relaxed">
+              You have completed every unique question in <strong>${escapeHtml(mod.title)}</strong>. (+15 XP per first-try correct answer +25 XP module mastery bonus).
+            </p>
+            <button onclick="resetModuleQuiz('${mod.id}')" class="px-4 py-2.5 rounded-xl btn-dark font-bold text-xs transition cursor-pointer">
+              Restart Module Questions (0 XP on Replay)
+            </button>
+          </div>
+        `;
+      } else {
+        const currentQ = mod.quizzes[qIndex];
+        quizHtml = `
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">
+                Question ${qIndex + 1} of ${totalQ} • Unique Topic Bank
+              </span>
+              <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold">
+                +15 XP (First Try Only)
+              </span>
+            </div>
+
+            <p class="font-bold text-sm sm:text-base text-slate-900">${escapeHtml(currentQ.question)}</p>
+
+            <div class="space-y-2.5">
+              ${currentQ.options.map((opt, idx) => `
+                <button onclick="submitQuizAnswer('${mod.id}', ${qIndex}, ${idx})" class="quiz-option w-full p-3.5 rounded-2xl text-left text-xs sm:text-sm font-bold transition cursor-pointer">
+                  ${escapeHtml(opt)}
+                </button>
+              `).join("")}
+            </div>
+
+            <p id="quiz-feedback-msg" class="text-xs font-semibold text-slate-600 pt-1"></p>
+          </div>
+        `;
+      }
+
+      box.innerHTML = `
+        <div class="border-b border-slate-100 pb-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-2xl ${mod.colorClass} flex items-center justify-center text-xl">
+              ${iconHtml}
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-extrabold">
+              ${escapeHtml(mod.badge)}
+            </span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">${escapeHtml(mod.title)}</h2>
+          <p class="text-sm text-slate-500 mt-1">${escapeHtml(mod.desc)}</p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-base font-extrabold text-slate-900">Learning Passage</h3>
+          ${mod.passage.map(para => `
+            <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(para)}</p>
+          `).join("")}
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          ${mod.coreFacts.map(([heading, body]) => `
+            <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
+              <h4 class="font-extrabold text-xs text-emerald-900 mb-1">${escapeHtml(heading)}</h4>
+              <p class="text-xs text-slate-700 leading-relaxed">${escapeHtml(body)}</p>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h3 class="text-lg font-extrabold text-slate-900">Module Knowledge Check</h3>
+            <span class="text-xs font-bold text-slate-500">Progress: ${qIndex} / ${totalQ}</span>
+          </div>
+          ${quizHtml}
+        </div>
+      `;
+    }
+
+    function submitQuizAnswer(moduleId, questionIdx, selectedOptionIdx) {
+      const mod = CIVIC_MODULES.find(m => m.id === moduleId);
+      if (!mod) return;
+
+      const currentQ = mod.quizzes[questionIdx];
+      if (!currentQ) return;
+
+      const missKey = `${moduleId}:${questionIdx}`;
+      const feedbackEl = document.getElementById("quiz-feedback-msg");
+
+      if (selectedOptionIdx === currentQ.correctIndex) {
+        const missedBefore = Boolean(appState.moduleMissedFirstTry[missKey]);
+        const nextIdx = questionIdx + 1;
+        appState.moduleQuizProgress[moduleId] = nextIdx;
+
+        const completedAllNow = nextIdx >= mod.quizzes.length;
+        if (completedAllNow && !appState.completedQuizzes.includes(moduleId)) {
+          appState.completedQuizzes.push(moduleId);
+        }
+
+        if (!missedBefore) {
+          const bonus = completedAllNow ? 25 : 0;
+          const totalAward = 15 + bonus;
+          const descText = completedAllNow
+            ? `First-try right answer (+15 XP) + ${mod.title} mastery bonus (+25 XP)!`
+            : `First-try right answer on Question ${questionIdx + 1} (+15 XP).`;
+          awardFirstTryXp(totalAward, `+${totalAward} XP Earned!`, descText);
+        } else {
+          if (completedAllNow) {
+            awardFirstTryXp(25, "+25 XP Mastery Bonus!", `Completed all ${mod.quizzes.length} questions in ${mod.title}.`);
+          } else {
+            updateHeaderUI();
+            persistState();
+            showToast("0 XP for This Question", "Answered right after an earlier wrong try — advancing to next question.");
+          }
+        }
+
+        renderReader();
+      } else {
+        // First-try wrong selection locks out XP for this question even if user clicks the right option afterward
+        appState.moduleMissedFirstTry[missKey] = true;
+        persistState();
+
+        if (feedbackEl) {
+          feedbackEl.className = "text-xs font-bold text-rose-800 pt-1";
+          feedbackEl.innerText = `Incorrect on your first try — 0 XP will be awarded for this question. Hint: ${currentQ.explanation}`;
+        }
+      }
+    }
+
+    function resetModuleQuiz(moduleId) {
+      appState.moduleQuizProgress[moduleId] = 0;
+      appState.completedQuizzes = appState.completedQuizzes.filter(id => id !== moduleId);
+      Object.keys(appState.moduleMissedFirstTry).forEach(key => {
+        if (key.startsWith(`${moduleId}:`)) {
+          delete appState.moduleMissedFirstTry[key];
+        }
+      });
+      persistState();
+      renderReader();
+      showToast("Module Reset", "Replaying questions awards 0 XP on repeated attempts.");
+    }
+
+    function openGradeSelectorModal() {
+      const modal = document.getElementById("grade-modal");
+      const gSel = document.getElementById("modal-grade-select");
+      const dSel = document.getElementById("modal-difficulty-select");
+      if (gSel) gSel.value = String(appState.grade);
+      if (dSel) dSel.value = appState.difficulty;
+      if (modal) modal.classList.remove("hidden");
+    }
+
+    function closeGradeSelectorModal() {
+      const modal = document.getElementById("grade-modal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function saveGradeSelectorModal() {
+      const gSel = document.getElementById("modal-grade-select");
+      const dSel = document.getElementById("modal-difficulty-select");
+      const newGrade = gSel ? parseInt(gSel.value, 10) : appState.grade;
+      const newDiff = dSel ? dSel.value : appState.difficulty;
+
+      if (newGrade !== appState.grade) {
+        appState.grade = newGrade;
+        appState.xp = 0;
+        appState.level = 1;
+        appState.streak = 0;
+        appState.completedQuizzes = [];
+        appState.moduleQuizProgress = {};
+        appState.moduleMissedFirstTry = {};
+        appState.dailyChallengeAnswered = false;
+        appState.dailyChallengeMissedFirstTry = false;
+      }
+
+      appState.difficulty = newDiff;
+      closeGradeSelectorModal();
+      updateHeaderUI();
+      persistState();
+
+      if (appState.currentView === "dashboard") renderDashboard();
+      if (appState.currentView === "hub") renderHub();
+      showToast("Settings Updated", `Grade ${appState.grade} • ${appState.difficulty}`);
+    }
+
+    function openPrivacyModal() {
+      const modal = document.getElementById("privacy-modal");
+      if (modal) modal.classList.remove("hidden");
+    }
+
+    function closePrivacyModal() {
+      const modal = document.getElementById("privacy-modal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function eraseMyRecord() {
+      const currentUser = appState.username;
+      try {
+        if (window.__civicFirestore && typeof window.__civicFirestore.deleteDoc === "function" && currentUser) {
+          window.__civicFirestore.deleteDoc(currentUser).catch(() => {});
+        }
+      } catch (e) {}
+
+      appState = createFreshState({
+        username: currentUser,
+        xp: 0,
+        level: 1,
+        streak: 0,
+        currentView: currentUser ? "dashboard" : "auth"
+      });
+
+      closePrivacyModal();
+      updateHeaderUI();
+      if (currentUser) {
+        renderDashboard();
+      }
+      showToast("Record Erased", "Your session and cloud record have been cleared (0 XP, 0 Day streak).");
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      updateHeaderUI();
+    });
+  </script>
+</body>
+</html>
